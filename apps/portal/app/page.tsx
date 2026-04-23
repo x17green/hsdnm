@@ -3,31 +3,41 @@ import {
   Section, 
   Heading, 
   Text, 
-  Button 
+  Button,
+  getWebLink,
+  getPortalLink
 } from "@hsdnm/ui"
 import Link from "next/link"
+import Image from "next/image"
 import { Shield, Users, Lock, ChevronRight } from "lucide-react"
 
 export default function PortalLandingPage() {
   return (
     <main className="min-h-screen bg-neutral-50 flex flex-col">
       {/* ── Institutional Header ── */}
-      <header className="py-8 px-6 bg-green-900 border-b-2 border-gold-500 shadow-lg">
+      <header className="py-6 px-6 bg-green-900 border-b-2 border-gold-500 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center font-serif font-black text-green-900 text-lg border-2 border-green-700">
-              HSD
+            <div className="relative w-14 h-14 rounded-full bg-white flex items-center justify-center p-1 border-2 border-gold-500 overflow-hidden shadow-[0_0_15px_rgba(201,162,39,0.3)]">
+              <Image 
+                src="/Logo.PNG" 
+                alt="HSDNM Official Logo" 
+                width={56}
+                height={56}
+                className="object-contain"
+                priority
+              />
             </div>
             <div>
-              <Heading level={4} className="text-white font-serif leading-none">
+              <Heading level={4} className="text-white font-serif leading-none tracking-tight">
                 HSDNM
               </Heading>
-              <Text variant="label" className="text-gold-500 tracking-[0.2em] text-[10px] uppercase">
+              <Text variant="body" className="text-gold-500 tracking-[0.2em] text-[10px] uppercase font-black">
                 Member Portal
               </Text>
             </div>
           </div>
-          <Link href="https://hsdnationalmovement.vercel.app" className="text-white/60 hover:text-gold-500 text-xs font-sans tracking-widest uppercase transition-colors">
+          <Link href={getWebLink("/")} className="text-white/60 hover:text-gold-500 text-xs font-sans tracking-widest uppercase transition-colors">
             Main Site
           </Link>
         </div>
