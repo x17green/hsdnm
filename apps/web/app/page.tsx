@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import {
   Button as HSDButton,
   Logo,
@@ -120,8 +121,8 @@ export default function LandingPage() {
         logoSize="lg"
       >
         <Surface className="flex items-center gap-8">
-          <Link href="#mission" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
-            Our Mission
+          <Link href="/about" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
+            About
           </Link>
           <Link href="#structure" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
             Structure
@@ -149,33 +150,67 @@ export default function LandingPage() {
         {/* ══════════════
             HERO — 30% Brand Layer
         ══════════════ */}
-        <Section variant="hero">
-          <Surface className="max-w-4xl animate-brand-fade">
-            <Stack gap="lg">
+        <Section variant="hero" spacing="none" className="py-5 lg:py-2">
+          <Surface className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center animate-brand-fade">
+            {/* Left Content Column */}
+            <Stack gap="lg" className="lg:col-span-7">
               <BrandBadge variant="white">
                 National Movement · Est. 2026 · Federal Republic of Nigeria
               </BrandBadge>
-              <Heading level={1} mode="white" shadow="gold">
+              <Heading level={1} mode="white" shadow="gold" className="text-3xl sm:text-4xl lg:text-5xl">
                 Mobilising Nigerians for{" "}
                 <Surface className="text-gold-400 underline decoration-gold-500/30 underline-offset-8">
                   Responsible Leadership.
                 </Surface>
               </Heading>
-              <Text variant="lead" mode="white" className="max-w-3xl opacity-85">
+              <Text variant="lead" mode="white" className="max-w-2xl opacity-85 text-lg md:text-xl">
                 The Sen. Henry Seriake Dickson National Movement is a value-driven civic
                 and political mobilisation platform. We mobilise citizens — especially
                 young Nigerians — toward active participation in governance, policy
                 advocacy, and leadership accountability.
               </Text>
-              <Surface className="flex flex-col sm:flex-row gap-4 pt-4">
-                <HSDButton variant="accent" className="flex items-center justify-center gap-2 h-12 px-6 text-xs uppercase tracking-wider" as={Link} href={getPortalLink("/register")}>
+              <Surface className="flex flex-col w-full sm:flex-row sm:w-full gap-4 pt-6">
+                <HSDButton variant="accent" className="flex items-center justify-center gap-2 h-14 px-8 text-sm uppercase tracking-widest" as={Link} href={getPortalLink("/register")}>
                   Join the Movement <ChevronRight className="size-4" />
                 </HSDButton>
-                <HSDButton variant="outline-dark" className="flex items-center justify-center gap-2 h-12 px-6 text-xs uppercase tracking-wider" as={Link} href="#mission">
+                <HSDButton variant="outline-dark" className="flex items-center justify-center gap-2 h-14 px-8 text-sm uppercase tracking-widest" as={Link} href="#mission">
                   Our Mission <ArrowRight className="size-4" />
                 </HSDButton>
               </Surface>
             </Stack>
+
+            {/* Right Portrait Column — Institutional Shield */}
+            <Surface className="lg:col-span-5 relative flex justify-center lg:justify-end">
+              <Surface className="relative w-full max-w-md aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
+                <Image 
+                  src="/principal-dickson.jpg" 
+                  alt="Senator Henry Seriake Dickson"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+                {/* Brand Overlays */}
+                <Surface className="absolute inset-0 bg-green-900/10 mix-blend-multiply pointer-events-none">{null}</Surface>
+                {/* Structural Accent Rule */}
+                <Surface className="absolute top-8 -right-4 w-24 h-1 bg-gold-500 shadow-gold z-10 hidden lg:block">{null}</Surface>
+                
+                {/* Floating Citation Overlay */}
+                <Surface className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-green-950 via-green-950/60 to-transparent p-8 pt-24 text-center">
+                  <Text mode="white" className="font-serif italic text-xl text-gold-500 leading-tight m-0">
+                    "Governance is a trust; an institutional mandate to build the future."
+                  </Text>
+                  <Surface className="h-px w-12 bg-gold-500/40 mx-auto mt-4">{null}</Surface>
+                  <Text variant="xs" className="text-white/60 font-black tracking-widest uppercase mt-4">
+                    Sen. Henry Seriake Dickson
+                  </Text>
+                </Surface>
+              </Surface>
+
+              {/* Background Geometric Detail */}
+              <Surface className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none">
+                <Logo variant="seal" size="xl" className="w-full h-full scale-150 rotate-12" />
+              </Surface>
+            </Surface>
           </Surface>
         </Section>
 
