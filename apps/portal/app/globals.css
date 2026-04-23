@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+@import "@hsdnm/theme";
+
+/* ══════════════════════════════════════════════════════════════
+   HSDNM Portal — Global Styles
+   All design tokens defined in @hsdnm/theme (packages/theme/index.css)
+══════════════════════════════════════════════════════════════ */
+
+/* Explicit source directives for Tailwind v4 content detection.
+   Paths are relative to this file: apps/portal/app/globals.css */
+@source "../../../packages/ui/src/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(201, 162, 39, 0.25);
+    color: inherit;
+  }
+}

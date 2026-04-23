@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSDNM Brand Guide 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   HSDNM BRAND GUIDE — DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  /* ── Core Brand Palette ── */
+  --green-900: #001a14;   /* Forest Black — dark mode base */
+  --green-800: #002d22;
+  --green-700: #004d3d;   /* HSD Deep Green — PRIMARY */
+  --green-600: #005c48;
+  --green-500: #007a5e;
+  --green-400: #1a9e7a;
+  --green-300: #4dc4a0;
+  --green-200: #a8e4d3;
+  --green-100: #d4f2e8;
+  --green-50:  #edf9f4;
+
+  --gold-900:  #3d2800;
+  --gold-800:  #7a5000;
+  --gold-700:  #a07d14;   /* Gold Dark */
+  --gold-600:  #b89020;
+  --gold-500:  #c9a227;   /* HSD Gold — ACCENT */
+  --gold-400:  #d4b040;
+  --gold-300:  #e0c060;
+  --gold-200:  #ecd490;
+  --gold-100:  #f5e8c0;
+  --gold-50:   #fdf6e0;
+
+  --neutral-900: #0f1117;
+  --neutral-800: #1c1e26;
+  --neutral-700: #2d3142;
+  --neutral-600: #4a4f6a;
+  --neutral-500: #6b7080;
+  --neutral-400: #9499aa;
+  --neutral-300: #c0c4d0;
+  --neutral-200: #dde0e8;
+  --neutral-100: #eef0f4;
+  --neutral-50:  #F8F9FA;  /* HSD Foundation */
+  --white:       #ffffff;
+
+  /* ── 60-30-10 Semantic Tokens — Light Mode ── */
+  --surface:         var(--white);        /* 60% — page bg */
+  --surface-alt:     var(--neutral-50);   /* 60% alt — card bg */
+  --surface-raised:  var(--white);
+  --brand:           var(--green-700);    /* 30% — brand presence */
+  --brand-muted:     var(--green-50);
+  --brand-dark:      var(--green-900);
+  --accent:          var(--gold-500);     /* 10% — CTA, highlights */
+  --accent-hover:    var(--gold-400);
+  --accent-text:     var(--gold-700);
+
+  --text-primary:    var(--neutral-900);
+  --text-secondary:  var(--neutral-600);
+  --text-muted:      var(--neutral-400);
+  --text-on-brand:   var(--white);
+  --text-on-accent:  var(--green-900);
+
+  --border:          var(--neutral-200);
+  --border-brand:    var(--green-700);
+  --border-accent:   var(--gold-500);
+
+  /* ── Typography ── */
+  --serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
+  --mono:   'DM Mono', 'Courier New', monospace;
+
+  /* ── Spacing Scale ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ── Border Radius ── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   16px;
+  --radius-pill: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.07);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-brand: 0 4px 20px rgba(0,77,61,0.25);
+  --shadow-gold:  0 4px 20px rgba(201,162,39,0.30);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--sans);
+  background: var(--neutral-50);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── Layout ─── */
+.guide-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ─── Sidebar Nav ─── */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--green-900);
+  border-right: 1px solid rgba(201,162,39,0.15);
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,162,39,0.3) transparent;
+}
+.sidebar-header {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(201,162,39,0.15);
+  flex-shrink: 0;
+}
+.sidebar-seal {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--green-700);
+  border: 2px solid var(--gold-500);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.sidebar-seal-inner {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--green-900);
+  letter-spacing: -0.02em;
+}
+.sidebar-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+.sidebar-subtitle {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-500);
+  margin-top: 2px;
+}
+.sidebar-version {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 8px;
+}
+
+.nav-section {
+  padding: 20px 16px 8px;
+  flex: 1;
+}
+.nav-section-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3);
+  padding: 0 8px 8px;
+  margin-bottom: 4px;
+}
+.nav-item {
+  display: block;
+  padding: 9px 10px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: all 0.18s;
+  margin-bottom: 2px;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.nav-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.9);
+}
+.nav-item.active {
+  background: rgba(201,162,39,0.12);
+  color: var(--gold-400);
+  font-weight: 500;
+  border-left: 2px solid var(--gold-500);
+  padding-left: 8px;
+}
+.nav-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 12px 8px;
+}
+
+/* ─── Main Content ─── */
+.main-content {
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── Page section ─── */
+.page-section {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── Section Hero ─── */
+.section-hero {
+  padding: 56px 56px 40px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,77,61,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.section-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-700);
+  background: var(--gold-50);
+  border: 1px solid var(--gold-200);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+.section-hero-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-500);
+}
+.section-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--green-700);
+  line-height: 1.15;
+  max-width: 700px;
+  margin-bottom: 16px;
+}
+.section-hero p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ─── Section Body ─── */
+.section-body {
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ─── Sub-section ─── */
+.sub-section { display: flex; flex-direction: column; gap: 24px; }
+.sub-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-700);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.sub-title-num {
+  width: 28px; height: 28px;
+  background: var(--green-700);
+  color: white;
+  border-radius: 50%;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sub-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+/* ─── Color Swatches ─── */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.swatch-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.swatch-color {
+  height: 96px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 12px;
+}
+.swatch-role {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.swatch-info {
+  padding: 14px;
+  background: white;
+}
+.swatch-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.swatch-hex {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+.swatch-usage {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Ratio bars */
+.ratio-block {
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 64px;
+  box-shadow: var(--shadow-md);
+}
+.ratio-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+.ratio-seg-pct {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.ratio-seg-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+}
+
+/* ─── Token Scale ─── */
+.token-scale {
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.token-stop {
+  flex: 1;
+  min-width: 40px;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4px 6px;
+  position: relative;
+  cursor: default;
+}
+.token-stop-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+/* ─── Typography Specimens ─── */
+.type-specimen {
+  padding: 28px 32px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.type-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.type-tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: var(--border);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.type-spec {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.display-1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; color: var(--green-700); }
+.display-2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; color: var(--text-primary); }
+.heading-1 { font-family: var(--serif); font-size: 2rem; font-weight: 700; line-height: 1.25; }
+.heading-2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; line-height: 1.3; }
+.heading-3 { font-family: var(--sans); font-size: 1.15rem; font-weight: 600; line-height: 1.4; }
+.body-lg   { font-family: var(--sans); font-size: 1.05rem; font-weight: 400; line-height: 1.75; }
+.body-md   { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; line-height: 1.7; }
+.label-txt { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; }
+.caption   { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; color: var(--text-secondary); line-height: 1.6; }
+.code-txt  { font-family: var(--mono); font-size: 0.85rem; color: var(--green-700); background: var(--green-50); padding: 2px 6px; border-radius: 3px; }
+
+/* ─── Component Gallery ─── */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.component-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-alt);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.component-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 12px 24px;
+  border: none; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--green-700);
+  color: white;
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover { background: var(--green-600); transform: translateY(-1px); }
+.btn-accent {
+  background: var(--gold-500);
+  color: var(--green-900);
+  box-shadow: var(--shadow-gold);
+}
+.btn-accent:hover { background: var(--gold-400); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--green-700);
+  border: 1.5px solid var(--green-700);
+}
+.btn-outline:hover { background: var(--green-50); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
+}
+.btn-ghost:hover { background: var(--surface-alt); color: var(--text-primary); }
+.btn-sm { font-size: 0.7rem; padding: 8px 16px; }
+.btn-lg { font-size: 0.9rem; padding: 16px 32px; }
+
+/* ─── Form Inputs ─── */
+.input-wrap { display: flex; flex-direction: column; gap: 6px; }
+.input-label {
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+.input {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--sans); font-size: 0.9rem;
+  color: var(--text-primary); background: white;
+  outline: none; transition: border 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.input:focus { border-color: var(--green-700); box-shadow: 0 0 0 3px rgba(0,77,61,0.12); }
+.input-hint { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ─── Badge / Tag ─── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+.badge-green { background: var(--green-50); color: var(--green-700); border: 1px solid var(--green-200); }
+.badge-gold  { background: var(--gold-50);  color: var(--gold-700);  border: 1px solid var(--gold-200); }
+.badge-neu   { background: var(--neutral-100); color: var(--neutral-600); border: 1px solid var(--neutral-200); }
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+/* ─── Cards ─── */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.card-brand {
+  background: var(--green-700);
+  color: white;
+  border-color: var(--green-700);
+}
+.card-accent {
+  border-top: 3px solid var(--gold-500);
+}
+.card-stat-num {
+  font-family: var(--serif);
+  font-size: 2.5rem; font-weight: 900;
+  color: var(--green-700); line-height: 1;
+}
+.card-stat-label {
+  font-size: 0.75rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-muted); margin-top: 4px;
+}
+
+/* ─── Divider ─── */
+.rule { height: 1px; background: var(--border); margin: 0; }
+.rule-brand { height: 2px; background: var(--green-700); }
+.rule-accent { height: 2px; background: var(--gold-500); }
+
+/* ─── Page Layout Wireframes ─── */
+.wireframe {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: white;
+}
+.wf-header {
+  height: 56px;
+  background: var(--green-900);
+  border-bottom: 3px solid var(--gold-500);
+  display: flex; align-items: center;
+  padding: 0 20px; gap: 12px;
+}
+.wf-logo-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--gold-500); }
+.wf-logo-bar { width: 60px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+.wf-nav-pills { display: flex; gap: 6px; margin-left: auto; }
+.wf-pill { width: 40px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 2px; }
+.wf-cta-pill { width: 56px; height: 26px; background: var(--gold-500); border-radius: 2px; }
+
+.wf-hero {
+  padding: 36px 24px;
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-start;
+}
+.wf-hero-badge { width: 80px; height: 10px; background: var(--gold-500); border-radius: 2px; opacity: 0.9; }
+.wf-hero-h1 { width: 260px; height: 16px; background: rgba(255,255,255,0.9); border-radius: 2px; }
+.wf-hero-h1b { width: 200px; height: 16px; background: rgba(255,255,255,0.9); border-radius: 2px; }
+.wf-hero-p { width: 220px; height: 8px; background: rgba(255,255,255,0.45); border-radius: 2px; }
+.wf-hero-p2 { width: 190px; height: 8px; background: rgba(255,255,255,0.45); border-radius: 2px; }
+.wf-hero-btns { display: flex; gap: 8px; margin-top: 4px; }
+.wf-btn-p { width: 88px; height: 30px; background: var(--gold-500); border-radius: 2px; }
+.wf-btn-o { width: 80px; height: 30px; border: 1.5px solid rgba(255,255,255,0.5); border-radius: 2px; }
+
+.wf-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.wf-section-label { width: 100px; height: 8px; background: var(--gold-500); border-radius: 2px; opacity: 0.6; }
+.wf-section-h { width: 160px; height: 12px; background: var(--neutral-300); border-radius: 2px; }
+.wf-card-row { display: flex; gap: 10px; }
+.wf-card-sm {
+  flex: 1; padding: 12px; border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-top: 2px solid var(--gold-500);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.wf-card-line { height: 6px; background: var(--neutral-200); border-radius: 2px; }
+.wf-card-line-sm { height: 6px; background: var(--neutral-100); border-radius: 2px; width: 70%; }
+
+.wf-footer { padding: 20px 24px; background: var(--green-900); display: flex; gap: 16px; }
+.wf-footer-col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.wf-footer-line { height: 5px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+.wf-footer-line-short { height: 5px; background: rgba(255,255,255,0.1); border-radius: 2px; width: 60%; }
+
+/* ─── Spacing Visual ─── */
+.spacing-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.spacing-block { background: var(--green-100); border: 1px solid var(--green-300); flex-shrink: 0; border-radius: 2px; }
+.spacing-label { font-family: var(--mono); font-size: 0.75rem; color: var(--text-secondary); min-width: 70px; }
+.spacing-value { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ─── Icon System ─── */
+.icon-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.icon-chip {
+  width: 52px; height: 52px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  background: white;
+  color: var(--green-700);
+  cursor: default;
+  transition: all 0.15s;
+}
+.icon-chip:hover { background: var(--green-50); border-color: var(--green-300); }
+
+/* ─── Grid System ─── */
+.grid-demo {
+  display: grid;
+  gap: 8px;
+}
+.grid-col {
+  height: 36px;
+  background: rgba(0,77,61,0.08);
+  border: 1px solid rgba(0,77,61,0.2);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.6rem; color: var(--green-700); font-weight: 600;
+}
+
+/* ─── Dark mode preview ─── */
+.dark-preview {
+  background: var(--green-900);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(201,162,39,0.2);
+}
+
+/* ─── Code blocks ─── */
+.code-block {
+  background: var(--neutral-900);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  overflow-x: auto;
+  position: relative;
+}
+.code-block pre {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+.code-block .c-comment { color: #718096; }
+.code-block .c-var   { color: var(--gold-300); }
+.code-block .c-val   { color: #9ae6b4; }
+.code-block .c-key   { color: #90cdf4; }
+.code-copy {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 3px;
+  padding: 4px 10px; cursor: pointer; transition: all 0.15s;
+}
+.code-copy:hover { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.8); }
+
+/* ─── Motion indicator ─── */
+.motion-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  background: var(--neutral-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem; color: var(--text-secondary);
+}
+.motion-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--green-700);
+}
+.motion-dot.fast  { animation: pulse-fast 0.3s ease infinite alternate; }
+.motion-dot.med   { animation: pulse-fast 0.5s ease infinite alternate; }
+.motion-dot.slow  { animation: pulse-fast 0.8s ease infinite alternate; }
+@keyframes pulse-fast { from { transform: scale(1); opacity:0.5; } to { transform: scale(1.4); opacity:1; } }
+
+/* ─── Page anatomy ─── */
+.anatomy-row {
+  display: flex; align-items: stretch;
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.anatomy-label-col {
+  width: 140px; flex-shrink: 0;
+  background: var(--green-900);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+  display: flex; align-items: center; padding: 12px 16px;
+}
+.anatomy-content {
+  flex: 1; padding: 16px 20px;
+  font-size: 0.82rem; color: var(--text-secondary);
+  border-left: 3px solid var(--gold-500);
+}
+.anatomy-content strong { color: var(--text-primary); font-weight: 600; }
+
+/* ─── Info callout ─── */
+.callout {
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border-left: 3px solid;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.callout-green {
+  background: var(--green-50);
+  border-color: var(--green-700);
+  color: var(--green-700);
+}
+.callout-gold {
+  background: var(--gold-50);
+  border-color: var(--gold-500);
+  color: var(--gold-800);
+}
+.callout-neutral {
+  background: var(--neutral-50);
+  border-color: var(--neutral-300);
+  color: var(--text-secondary);
+}
+
+/* ─── Elevation grid ─── */
+.elev-row {
+  display: flex; gap: 16px; align-items: center; padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.elev-box {
+  width: 80px; height: 48px;
+  background: white;
+  border-radius: var(--radius-md);
+}
+.elev-label { font-family: var(--mono); font-size: 0.72rem; color: var(--text-secondary); }
+.elev-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .guide-wrap { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; }
+  .section-hero, .section-body { padding: 32px 24px; }
+  .swatch-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .component-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  .sidebar { display: none; }
+  .guide-wrap { grid-template-columns: 1fr; }
+  .page-section { display: block !important; page-break-before: always; }
+}
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-seal">
+        <div class="sidebar-seal-inner">HSD</div>
+      </div>
+      <div class="sidebar-title">HSDNM</div>
+      <div class="sidebar-subtitle">Brand Guide</div>
+      <div class="sidebar-version">v1.0 — 2025 Edition</div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-label">Foundation</div>
+      <button class="nav-item active" onclick="showSection('overview')">Overview & Brand DNA</button>
+      <button class="nav-item" onclick="showSection('color')">Color System</button>
+      <button class="nav-item" onclick="showSection('typography')">Typography</button>
+      <button class="nav-item" onclick="showSection('spacing')">Spacing & Grid</button>
+
+      <div class="nav-divider"></div>
+      <div class="nav-section-label">Components</div>
+      <button class="nav-item" onclick="showSection('components')">UI Components</button>
+      <button class="nav-item" onclick="showSection('forms')">Forms & Inputs</button>
+      <button class="nav-item" onclick="showSection('elevation')">Elevation & Motion</button>
+
+      <div class="nav-divider"></div>
+      <div class="nav-section-label">Pages</div>
+      <button class="nav-item" onclick="showSection('pages')">Page Architecture</button>
+      <button class="nav-item" onclick="showSection('darkmode')">Dark Mode</button>
+      <button class="nav-item" onclick="showSection('tokens')">Design Tokens (CSS)</button>
+    </div>
+  </aside>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main class="main-content">
+
+    <!-- ────────────────────────────────────────
+         SECTION 1 — OVERVIEW & BRAND DNA
+    ──────────────────────────────────────── -->
+    <section id="overview" class="page-section active">
+      <div class="section-hero">
+        <div class="section-hero-label">Brand Foundation</div>
+        <h1>HSDNM Brand Architecture</h1>
+        <p>A unified, professional design system for the Henry Seriake Dickson National Movement — built on the 60-30-10 color principle with HeroUI (v3 Beta) integration, optimized for political campaign excellence.</p>
+      </div>
+
+      <div class="section-body">
+
+        <!-- Brand Mission -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Brand DNA</div>
+          <p class="sub-desc">The HSDNM visual identity communicates <strong>authority, trust, and grassroots energy</strong>. Every design decision flows from three brand pillars:</p>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px;">
+            <div class="card card-accent">
+              <div style="width:40px;height:40px;background:var(--green-700);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Authority</div>
+              <p class="caption">Strong typography, deep green anchors, and sharp geometric forms signal institutional credibility and leadership.</p>
+            </div>
+            <div class="card card-accent">
+              <div style="width:40px;height:40px;background:var(--gold-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-700)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Trust</div>
+              <p class="caption">Consistent gold accents, clean white space, and structured layouts build the familiarity that earns public confidence.</p>
+            </div>
+            <div class="card card-accent">
+              <div style="width:40px;height:40px;background:var(--green-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-700)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Grassroots Energy</div>
+              <p class="caption">Approachable body type, generous breathing room,- **HeroUI (v3 Beta)**: State-of-the-art React Aria components with HSDNM branding.ios ensure every Nigerian feels welcome.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo Usage -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Logo Usage Rules</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+            <!-- Primary -->
+            <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+              <div style="width:96px;height:96px;border-radius:50%;background:var(--green-700);border:3px solid var(--gold-500);display:flex;align-items:center;justify-content:center;">
+                <div style="width:68px;height:68px;border-radius:50%;background:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--green-900);">HSD</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Primary — Full Colour</div>
+                <div class="badge badge-green">✓ Preferred</div>
+              </div>
+            </div>
+            <!-- On dark -->
+            <div class="card" style="background:var(--green-900);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+              <div style="width:96px;height:96px;border-radius:50%;background:var(--green-700);border:3px solid var(--gold-500);display:flex;align-items:center;justify-content:center;">
+                <div style="width:68px;height:68px;border-radius:50%;background:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--green-900);">HSD</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px;">On Dark Backgrounds</div>
+                <div class="badge badge-gold">✓ Approved</div>
+              </div>
+            </div>
+            <!-- Mono -->
+            <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+              <div style="width:96px;height:96px;border-radius:50%;background:#f0f0f0;border:3px solid #555;display:flex;align-items:center;justify-content:center;">
+                <div style="width:68px;height:68px;border-radius:50%;background:#333;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;font-weight:900;color:#f0f0f0;">HSD</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Monochrome — Print</div>
+                <div class="badge badge-neu">Print only</div>
+              </div>
+            </div>
+            <!-- Don't -->
+            <div class="card" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;opacity:0.6;">
+              <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(45deg,purple,orange);display:flex;align-items:center;justify-content:center;">
+                <div style="font-family:var(--serif);font-size:1.1rem;font-weight:900;color:white;">HSD</div>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Unapproved Colours</div>
+                <div class="badge" style="background:#fee;color:#c53030;border:1px solid #fed7d7;">✗ Never</div>
+              </div>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:rgba(197,48,48,0.4);">✕</div>
+            </div>
+          </div>
+
+          <div class="callout callout-green" style="margin-top:8px;">
+            <strong>Clear Space Rule:</strong> Always maintain a minimum clear space of at least the height of the "H" letterform on all four sides of the logo. Never crowd the seal with competing visual elements.
+          </div>
+        </div>
+
+        <!-- Brand voice -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Brand Voice & Tone</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-700);margin-bottom:12px;">We Are</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="anatomy-row"><div class="anatomy-label-col">Authoritative</div><div class="anatomy-content"><strong>We lead</strong> with facts, evidence, and clear policy positions. Not arrogant — earned authority.</div></div>
+                <div class="anatomy-row"><div class="anatomy-label-col">Inclusive</div><div class="anatomy-content"><strong>We speak</strong> to all Nigerians — market women, professors, farmers, professionals alike.</div></div>
+                <div class="anatomy-row"><div class="anatomy-label-col">Urgent</div><div class="anatomy-content"><strong>We act</strong> now. Language has energy. Headlines are calls, not announcements.</div></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#c53030;margin-bottom:12px;">We Are Not</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="anatomy-row" style="border-color:#fed7d7;"><div class="anatomy-label-col" style="background:#c53030;">Elitist</div><div class="anatomy-content">Avoid jargon, legalese, or language that excludes everyday Nigerians.</div></div>
+                <div class="anatomy-row" style="border-color:#fed7d7;"><div class="anatomy-label-col" style="background:#c53030;">Vague</div><div class="anatomy-content">No empty platitudes. Every message must anchor to a concrete action or outcome.</div></div>
+                <div class="anatomy-row" style="border-color:#fed7d7;"><div class="anatomy-label-col" style="background:#c53030;">Negative</div><div class="anatomy-content">We campaign on what we will build — not what opponents have broken.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 2 — COLOR SYSTEM
+    ──────────────────────────────────────── -->
+    <section id="color" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Color System</div>
+        <h1>60-30-10 Color Architecture</h1>
+        <p>A three-layer color system derived from logo extraction. Every surface, brand presence, and call-to-action has a defined color role — ensuring visual hierarchy and WCAG AA accessibility across all views.</p>
+      </div>
+
+      <div class="section-body">
+
+        <!-- 60-30-10 Visual Ratio -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> The Ratio at a Glance</div>
+          <p class="sub-desc">The 60-30-10 rule governs all layout decisions. Violating this ratio creates visual noise and weakens brand recognition.</p>
+
+          <div class="ratio-block">
+            <div class="ratio-seg" style="flex:6;background:var(--neutral-50);border-right:1px solid var(--border);">
+              <span class="ratio-seg-pct" style="color:var(--neutral-600);">60%</span>
+              <span class="ratio-seg-label" style="color:var(--neutral-500);">Surface</span>
+            </div>
+            <div class="ratio-seg" style="flex:3;background:var(--green-700);">
+              <span class="ratio-seg-pct" style="color:white;">30%</span>
+              <span class="ratio-seg-label" style="color:rgba(255,255,255,0.8);">Brand</span>
+            </div>
+            <div class="ratio-seg" style="flex:1;background:var(--gold-500);">
+              <span class="ratio-seg-pct" style="color:var(--green-900);font-size:0.9rem;">10%</span>
+              <span class="ratio-seg-label" style="color:var(--green-900);font-size:0.5rem;">Accent</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+            <div class="callout callout-neutral">
+              <strong>60% — Surface (White / Stone)</strong><br>
+              Page backgrounds, card backgrounds, white space. Creates breathing room and readability.
+            </div>
+            <div class="callout callout-green">
+              <strong>30% — Brand (HSD Deep Green)</strong><br>
+              Header, footer, nav, section backgrounds, filled buttons. Brand recognition layer.
+            </div>
+            <div class="callout callout-gold">
+              <strong>10% — Accent (HSD Gold)</strong><br>
+              Primary CTAs, active states, highlights, borders, icon accents. Never overuse.
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Palette -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Core Brand Tokens</div>
+          <div class="swatch-grid">
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#004d3d;">
+                <span class="swatch-role">Primary Brand</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSD Deep Green</div>
+                <div class="swatch-hex">#004d3d — hsla(164°, 100%, 15%, 1)</div>
+                <div class="swatch-usage">30% layer. Headers, filled buttons, section bands, nav bars, footer.</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#001a14;">
+                <span class="swatch-role">Brand Dark</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSD Forest Black</div>
+                <div class="swatch-hex">#001a14</div>
+                <div class="swatch-usage">Dark mode base. Sidebar nav, header on scroll, overlay backgrounds.</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#c9a227;">
+                <span class="swatch-role">Accent</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSD Gold</div>
+                <div class="swatch-hex">#c9a227 — hsla(43°, 68%, 47%, 1)</div>
+                <div class="swatch-usage">10% layer. Primary CTAs, focus rings, nav underlines, icon highlights.</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#F8F9FA;border-bottom:1px solid #eee;">
+                <span class="swatch-role" style="background:rgba(0,0,0,0.15);color:#444;">60% Surface</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSD Foundation</div>
+                <div class="swatch-hex">#F8F9FA</div>
+                <div class="swatch-usage">60% layer. Page bg, card alt bg, subtle section dividers.</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#edf9f4;border-bottom:1px solid #eee;">
+                <span class="swatch-role" style="background:rgba(0,0,0,0.1);color:#004d3d;">Brand Tint</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">Green 50 — Tint</div>
+                <div class="swatch-hex">#edf9f4</div>
+                <div class="swatch-usage">Badge backgrounds, hover states, info callout surfaces.</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#fdf6e0;border-bottom:1px solid #eee;">
+                <span class="swatch-role" style="background:rgba(0,0,0,0.1);color:#7a5000;">Accent Tint</span>
+              </div>
+              <div class="swatch-info">
+                <div class="swatch-name">Gold 50 — Tint</div>
+                <div class="swatch-hex">#fdf6e0</div>
+                <div class="swatch-usage">Gold badge backgrounds, warning states, accent callouts.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token Scale — Green -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Green Scale — Full Ramp</div>
+          <div class="token-scale">
+            <div class="token-stop" style="background:#edf9f4;"><span class="token-stop-label" style="color:#004d3d;">50</span></div>
+            <div class="token-stop" style="background:#d4f2e8;"><span class="token-stop-label" style="color:#004d3d;">100</span></div>
+            <div class="token-stop" style="background:#a8e4d3;"><span class="token-stop-label" style="color:#004d3d;">200</span></div>
+            <div class="token-stop" style="background:#4dc4a0;"><span class="token-stop-label" style="color:white;">300</span></div>
+            <div class="token-stop" style="background:#1a9e7a;"><span class="token-stop-label" style="color:white;">400</span></div>
+            <div class="token-stop" style="background:#007a5e;"><span class="token-stop-label" style="color:white;">500</span></div>
+            <div class="token-stop" style="background:#005c48;"><span class="token-stop-label" style="color:white;">600</span></div>
+            <div class="token-stop" style="background:#004d3d;"><span class="token-stop-label" style="color:white;">700 ★</span></div>
+            <div class="token-stop" style="background:#002d22;"><span class="token-stop-label" style="color:rgba(255,255,255,0.7);">800</span></div>
+            <div class="token-stop" style="background:#001a14;"><span class="token-stop-label" style="color:rgba(255,255,255,0.6);">900</span></div>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;">★ Primary brand token. Use stops 50–200 for tints, 600–900 for text on light backgrounds.</p>
+        </div>
+
+        <!-- Token Scale — Gold -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">04</span> Gold Scale — Full Ramp</div>
+          <div class="token-scale">
+            <div class="token-stop" style="background:#fdf6e0;"><span class="token-stop-label" style="color:#7a5000;">50</span></div>
+            <div class="token-stop" style="background:#f5e8c0;"><span class="token-stop-label" style="color:#7a5000;">100</span></div>
+            <div class="token-stop" style="background:#ecd490;"><span class="token-stop-label" style="color:#7a5000;">200</span></div>
+            <div class="token-stop" style="background:#e0c060;"><span class="token-stop-label" style="color:#7a5000;">300</span></div>
+            <div class="token-stop" style="background:#d4b040;"><span class="token-stop-label" style="color:white;">400</span></div>
+            <div class="token-stop" style="background:#c9a227;"><span class="token-stop-label" style="color:white;">500 ★</span></div>
+            <div class="token-stop" style="background:#b89020;"><span class="token-stop-label" style="color:white;">600</span></div>
+            <div class="token-stop" style="background:#a07d14;"><span class="token-stop-label" style="color:white;">700</span></div>
+            <div class="token-stop" style="background:#7a5000;"><span class="token-stop-label" style="color:rgba(255,255,255,0.8);">800</span></div>
+            <div class="token-stop" style="background:#3d2800;"><span class="token-stop-label" style="color:rgba(255,255,255,0.6);">900</span></div>
+          </div>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">05</span> Accessibility — Contrast Ratios</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);padding:0 12px 8px;">
+              <span>Pairing</span><span>Ratio</span><span>WCAG</span><span>Usage</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;align-items:center;padding:12px;background:var(--green-700);border-radius:var(--radius-md);">
+              <span style="color:white;font-size:0.85rem;font-weight:600;">White on Green-700</span>
+              <span style="font-family:var(--mono);color:rgba(255,255,255,0.8);font-size:0.8rem;">7.2:1</span>
+              <span style="background:rgba(255,255,255,0.15);color:white;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:2px;">AAA ✓</span>
+              <span style="color:rgba(255,255,255,0.7);font-size:0.75rem;">Buttons, nav text</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;align-items:center;padding:12px;background:var(--gold-500);border-radius:var(--radius-md);">
+              <span style="color:var(--green-900);font-size:0.85rem;font-weight:600;">Green-900 on Gold</span>
+              <span style="font-family:var(--mono);color:var(--green-900);font-size:0.8rem;opacity:0.8;">9.8:1</span>
+              <span style="background:rgba(0,0,0,0.15);color:var(--green-900);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:2px;">AAA ✓</span>
+              <span style="color:var(--green-900);font-size:0.75rem;opacity:0.7;">CTA buttons</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;align-items:center;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);">
+              <span style="color:var(--green-700);font-size:0.85rem;font-weight:600;">Green-700 on Stone</span>
+              <span style="font-family:var(--mono);color:var(--text-secondary);font-size:0.8rem;">6.4:1</span>
+              <span style="background:var(--green-50);color:var(--green-700);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:2px;">AA ✓</span>
+              <span style="color:var(--text-muted);font-size:0.75rem;">Body text, links</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;align-items:center;padding:12px;background:var(--gold-50);border:1px solid var(--gold-200);border-radius:var(--radius-md);">
+              <span style="color:var(--gold-800);font-size:0.85rem;font-weight:600;">Gold-800 on Gold-50</span>
+              <span style="font-family:var(--mono);color:var(--gold-700);font-size:0.8rem;">5.1:1</span>
+              <span style="background:var(--gold-100);color:var(--gold-800);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:2px;">AA ✓</span>
+              <span style="color:var(--gold-700);font-size:0.75rem;">Gold badges</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 3 — TYPOGRAPHY
+    ──────────────────────────────────────── -->
+    <section id="typography" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Typography</div>
+        <h1>Type System</h1>
+        <p>Two typefaces. One voice. Playfair Display for editorial gravitas — DM Sans for clear, accessible communication. Never mix in a third face.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Font Families</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="card card-accent">
+              <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--text-muted);margin-bottom:16px;">Display / Serif — Headlines</div>
+              <div style="font-family:var(--serif);font-size:2.5rem;font-weight:900;color:var(--green-700);line-height:1.1;margin-bottom:12px;">Playfair<br>Display</div>
+              <p class="caption">Used for: H1, H2, section headings, hero text, quotes, stat numbers. Commands authority and conveys institutional weight.</p>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <span class="badge badge-green">Bold 700</span>
+                <span class="badge badge-green">Black 900</span>
+              </div>
+            </div>
+            <div class="card card-accent">
+              <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--text-muted);margin-bottom:16px;">Body / Sans — Interface</div>
+              <div style="font-family:var(--sans);font-size:2.5rem;font-weight:300;color:var(--text-primary);line-height:1.1;margin-bottom:12px;">DM Sans</div>
+              <p class="caption">Used for: body copy, labels, nav, buttons, captions, UI. Humanist proportions — readable at all sizes, accessible across all users.</p>
+              <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="badge badge-neu">Light 300</span>
+                <span class="badge badge-neu">Regular 400</span>
+                <span class="badge badge-neu">Medium 500</span>
+                <span class="badge badge-neu">SemiBold 600</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Type Scale — All Levels</div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">display-1</span><span class="type-spec">Playfair Display 900 / 4rem / leading-110</span></div>
+            <div class="display-1">Democracy in Action</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">display-2</span><span class="type-spec">Playfair Display 900 / 3rem / leading-115</span></div>
+            <div class="display-2">Advancing Nigeria Forward</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">h1</span><span class="type-spec">Playfair Display 700 / 2rem / leading-125</span></div>
+            <div class="heading-1">Senator Henry Seriake Dickson National Movement</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">h2</span><span class="type-spec">Playfair Display 700 / 1.5rem / leading-130</span></div>
+            <div class="heading-2">Grassroots Mobilization & Inclusive Leadership</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">h3</span><span class="type-spec">DM Sans 600 / 1.15rem / leading-140</span></div>
+            <div class="heading-3">NIN Verification Now Available for All Members</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">body-lg</span><span class="type-spec">DM Sans 400 / 1.05rem / leading-175</span></div>
+            <div class="body-lg">The movement is committed to bringing democratic participation to every ward, local government, and community across Nigeria — regardless of background or geography.</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">body-md</span><span class="type-spec">DM Sans 400 / 0.95rem / leading-170</span></div>
+            <div class="body-md">Register today with your NIN to receive your digital membership card and gain access to the member portal, coordinator hub, and training resources.</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">label</span><span class="type-spec">DM Sans 600 / 0.7rem / uppercase / tracking-180</span></div>
+            <div class="label-txt" style="color:var(--gold-700);">National Movement • Est. 2024 • Lagos, Nigeria</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">caption</span><span class="type-spec">DM Sans 400 / 0.8rem / leading-160 / text-secondary</span></div>
+            <div class="caption">All member data is protected under Nigerian data privacy guidelines. By registering you consent to our terms of engagement.</div>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><span class="type-tag">code / mono</span><span class="type-spec">DM Mono 400 / 0.85rem</span></div>
+            <div><code class="code-txt">--color-brand: #004d3d;</code> <code class="code-txt">--color-accent: #c9a227;</code></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 4 — SPACING & GRID
+    ──────────────────────────────────────── -->
+    <section id="spacing" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Spacing & Grid</div>
+        <h1>Layout Architecture</h1>
+        <p>A 4px base unit system with a 12-column responsive grid. Consistent spacing creates visual rhythm and signals professionalism.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> 4px Base Scale</div>
+          <div>
+            <div class="spacing-row"><div class="spacing-label">space-1</div><div class="spacing-block" style="width:4px;height:20px;"></div><div class="spacing-value">4px — Icon gaps, micro-spacing</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-2</div><div class="spacing-block" style="width:8px;height:20px;"></div><div class="spacing-value">8px — Internal component padding</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-3</div><div class="spacing-block" style="width:12px;height:20px;"></div><div class="spacing-value">12px — Input padding, nav gaps</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-4</div><div class="spacing-block" style="width:16px;height:20px;"></div><div class="spacing-value">16px — Card internal padding unit</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-6</div><div class="spacing-block" style="width:24px;height:20px;"></div><div class="spacing-value">24px — Between form fields, small section gaps</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-8</div><div class="spacing-block" style="width:32px;height:20px;"></div><div class="spacing-value">32px — Component group separation</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-12</div><div class="spacing-block" style="width:48px;height:20px;"></div><div class="spacing-value">48px — Section padding (mobile)</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-16</div><div class="spacing-block" style="width:64px;height:20px;"></div><div class="spacing-value">64px — Section padding (tablet)</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-20</div><div class="spacing-block" style="width:80px;height:20px;"></div><div class="spacing-value">80px — Hero vertical padding</div></div>
+            <div class="spacing-row"><div class="spacing-label">space-24</div><div class="spacing-block" style="width:96px;height:20px;"></div><div class="spacing-value">96px — Major section breaks (desktop)</div></div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> 12-Column Grid</div>
+          <p class="sub-desc">Max content width: <strong>1280px</strong> with 24px gutters (16px on mobile). Container padding: 24px sides (16px mobile).</p>
+
+          <div>
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;">Full 12 columns</div>
+            <div class="grid-demo" style="grid-template-columns:repeat(12,1fr);">
+              <div class="grid-col">1</div><div class="grid-col">2</div><div class="grid-col">3</div>
+              <div class="grid-col">4</div><div class="grid-col">5</div><div class="grid-col">6</div>
+              <div class="grid-col">7</div><div class="grid-col">8</div><div class="grid-col">9</div>
+              <div class="grid-col">10</div><div class="grid-col">11</div><div class="grid-col">12</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;">Common layouts</div>
+            <div class="grid-demo" style="grid-template-columns:repeat(12,1fr);margin-bottom:8px;">
+              <div class="grid-col" style="grid-column:span 8;">8 col — Body Copy</div>
+              <div class="grid-col" style="grid-column:span 4;">4 col — Sidebar</div>
+            </div>
+            <div class="grid-demo" style="grid-template-columns:repeat(12,1fr);margin-bottom:8px;">
+              <div class="grid-col" style="grid-column:span 4;">4 col</div>
+              <div class="grid-col" style="grid-column:span 4;">4 col</div>
+              <div class="grid-col" style="grid-column:span 4;">4 col</div>
+            </div>
+            <div class="grid-demo" style="grid-template-columns:repeat(12,1fr);">
+              <div class="grid-col" style="grid-column:span 3;">3</div>
+              <div class="grid-col" style="grid-column:span 3;">3</div>
+              <div class="grid-col" style="grid-column:span 3;">3</div>
+              <div class="grid-col" style="grid-column:span 3;">3</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Border Radius Scale</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;">
+            <div style="text-align:center;">
+              <div style="width:60px;height:60px;background:var(--green-700);border-radius:2px;"></div>
+              <div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">sm — 2px<br>Buttons, badges</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:60px;height:60px;background:var(--green-700);border-radius:4px;"></div>
+              <div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">md — 4px<br>Inputs, chips</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:60px;height:60px;background:var(--green-700);border-radius:8px;"></div>
+              <div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">lg — 8px<br>Cards, panels</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:60px;height:60px;background:var(--green-700);border-radius:16px;"></div>
+              <div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">xl — 16px<br>Feature cards</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:60px;height:60px;background:var(--green-700);border-radius:9999px;"></div>
+              <div style="font-size:0.7rem;color:var(--text-muted);margin-top:6px;">pill<br>Avatars, tags</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 5 — COMPONENTS
+    ──────────────────────────────────────── -->
+    <section id="components" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">UI Components</div>
+        <h1>Component Library</h1>
+        <p>Built on HeroUI v3 primitives with HSDNM brand tokens applied. All components are accessible, keyboard-navigable, and WCAG AA compliant.</p>
+      </div>
+
+      <div class="section-body">
+
+        <!-- Buttons -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Button Variants</div>
+          <div class="component-card">
+            <div class="component-card-label">Primary Buttons — Core CTA hierarchy</div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+              <button class="btn btn-primary">Join the Movement</button>
+              <button class="btn btn-accent">Register Now</button>
+              <button class="btn btn-outline">Learn More</button>
+              <button class="btn btn-ghost">View Resources</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+              <button class="btn btn-primary btn-sm">Small Primary</button>
+              <button class="btn btn-accent btn-sm">Small Accent</button>
+              <button class="btn btn-outline btn-sm">Small Outline</button>
+              <button class="btn btn-primary btn-lg">Large CTA — Donate</button>
+            </div>
+            <div class="callout callout-green" style="margin-top:8px;">
+              <strong>Usage Rule:</strong> Use <code class="code-txt">btn-primary</code> for main section actions. Reserve <code class="code-txt">btn-accent</code> (gold) for the <em>single highest-priority</em> CTA on any page. Never place two accent buttons side-by-side.
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges & Tags -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Badges & Status Tags</div>
+          <div class="component-card">
+            <div class="component-card-label">Informational badges</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+              <span class="badge badge-green"><span class="badge-dot"></span>Movement Active</span>
+              <span class="badge badge-gold"><span class="badge-dot"></span>Member Portal</span>
+              <span class="badge badge-neu">Resources</span>
+              <span class="badge" style="background:var(--green-700);color:white;border:none;">National</span>
+              <span class="badge" style="background:var(--gold-500);color:var(--green-900);border:none;">Priority</span>
+              <span class="badge" style="background:#fee;color:#c53030;border:1px solid #fed7d7;"><span class="badge-dot" style="background:#c53030;"></span>Urgent</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Card Patterns</div>
+          <div class="component-grid">
+
+            <!-- Stat card -->
+            <div class="card card-accent" style="display:flex;flex-direction:column;gap:4px;">
+              <div class="component-card-label">Stat Card</div>
+              <div class="card-stat-num">14,832</div>
+              <div class="card-stat-label">Registered Members</div>
+              <div style="margin-top:12px;font-size:0.78rem;color:var(--green-700);font-weight:600;">↑ 12% this month</div>
+            </div>
+
+            <!-- Event card -->
+            <div class="card" style="display:flex;flex-direction:column;gap:12px;">
+              <div class="component-card-label">Event Card</div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:48px;height:48px;background:var(--green-700);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                  <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-400);">JUL</span>
+                  <span style="font-family:var(--serif);font-size:1.2rem;font-weight:900;color:white;line-height:1;">14</span>
+                </div>
+                <div>
+                  <div style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--text-primary);">Ward Rally — Bayelsa</div>
+                  <div style="font-size:0.75rem;color:var(--text-muted);">10:00 AM · Community Centre</div>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" style="align-self:flex-start;">Register</button>
+            </div>
+
+            <!-- News card -->
+            <div class="card card-brand" style="display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold-400);">Latest News</div>
+              <div style="font-family:var(--serif);font-size:1rem;font-weight:700;color:white;line-height:1.35;">Senator Dickson Calls for South-South Economic Summit</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);">3 hours ago · National Affairs</div>
+              <a href="#" style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-400);">Read Full Story →</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation states -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">04</span> Navigation States</div>
+          <div class="component-card" style="background:var(--green-900);border-color:rgba(201,162,39,0.2);">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.35);margin-bottom:16px;">Nav Item States</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;">
+              <div style="padding:8px 16px;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);">Default</div>
+              <div style="padding:8px 16px;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.06);border-radius:var(--radius-sm);">Hover</div>
+              <div style="padding:8px 16px;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-400);border-bottom:2px solid var(--gold-500);">Active</div>
+              <div style="padding:8px 16px;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);cursor:not-allowed;">Disabled</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 6 — FORMS
+    ──────────────────────────────────────── -->
+    <section id="forms" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Forms & Inputs</div>
+        <h1>Form Design System</h1>
+        <p>Clear, accessible forms that reduce friction and drive membership registrations. Every field state is explicitly designed.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Input States</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+            <div class="input-wrap">
+              <div class="input-label">Full Name</div>
+              <input class="input" type="text" placeholder="Enter your full name">
+              <div class="input-hint">As it appears on your NIN document</div>
+            </div>
+            <div class="input-wrap">
+              <div class="input-label">NIN Number</div>
+              <input class="input" type="text" value="12345678901" style="border-color:var(--green-700);box-shadow:0 0 0 3px rgba(0,77,61,0.12);">
+              <div class="input-hint" style="color:var(--green-700);">✓ Valid NIN format</div>
+            </div>
+            <div class="input-wrap">
+              <div class="input-label">Phone Number</div>
+              <input class="input" type="tel" value="08012345" style="border-color:#e53e3e;box-shadow:0 0 0 3px rgba(229,62,62,0.1);">
+              <div class="input-hint" style="color:#e53e3e;">✗ Please enter a valid 11-digit number</div>
+            </div>
+            <div class="input-wrap">
+              <div class="input-label">State of Origin</div>
+              <input class="input" type="text" placeholder="Disabled field" disabled style="background:var(--neutral-100);cursor:not-allowed;color:var(--text-muted);">
+              <div class="input-hint">Auto-populated from NIN verification</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Registration Form Pattern</div>
+          <div class="card" style="max-width:560px;">
+            <div style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--green-700);margin-bottom:4px;">Join the Movement</div>
+            <div class="caption" style="margin-bottom:24px;">Complete your registration to receive your digital membership card.</div>
+
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div class="input-wrap">
+                  <div class="input-label">First Name</div>
+                  <input class="input" type="text" placeholder="Chukwuemeka">
+                </div>
+                <div class="input-wrap">
+                  <div class="input-label">Last Name</div>
+                  <input class="input" type="text" placeholder="Okonkwo">
+                </div>
+              </div>
+              <div class="input-wrap">
+                <div class="input-label">NIN Number</div>
+                <input class="input" type="text" placeholder="Enter your 11-digit NIN">
+              </div>
+              <div class="input-wrap">
+                <div class="input-label">Phone Number</div>
+                <input class="input" type="tel" placeholder="080 XXXX XXXX">
+              </div>
+              <div class="input-wrap">
+                <div class="input-label">Local Government Area</div>
+                <input class="input" type="text" placeholder="Select your LGA">
+              </div>
+
+              <div style="padding:14px;background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-md);font-size:0.8rem;color:var(--green-700);">
+                By registering, you agree to our <strong>Terms of Engagement</strong> and consent to receive movement updates.
+              </div>
+
+              <button class="btn btn-accent" style="width:100%;justify-content:center;">
+                Complete Registration
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 7 — ELEVATION & MOTION
+    ──────────────────────────────────────── -->
+    <section id="elevation" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Elevation & Motion</div>
+        <h1>Depth & Animation</h1>
+        <p>Shadow depth communicates z-level hierarchy. Motion communicates intent — transitions are purposeful, never decorative for their own sake.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Shadow Scale</div>
+          <div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:none;border:1px solid var(--border);"></div>
+              <div>
+                <div class="elev-label">shadow-none — Flat</div>
+                <div class="elev-desc">Table rows, list items, inline elements. No depth.</div>
+              </div>
+            </div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:var(--shadow-sm);"></div>
+              <div>
+                <div class="elev-label">shadow-sm — Raised</div>
+                <div class="elev-desc">Cards, badges, input fields. Subtle float above page.</div>
+              </div>
+            </div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:var(--shadow-md);"></div>
+              <div>
+                <div class="elev-label">shadow-md — Floating</div>
+                <div class="elev-desc">Dropdowns, nav drawers, active CTA buttons.</div>
+              </div>
+            </div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:var(--shadow-lg);"></div>
+              <div>
+                <div class="elev-label">shadow-lg — Overlay</div>
+                <div class="elev-desc">Modals, command palettes, sticky headers on scroll.</div>
+              </div>
+            </div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:var(--shadow-brand);background:var(--green-700);"></div>
+              <div>
+                <div class="elev-label">shadow-brand — Brand Glow</div>
+                <div class="elev-desc">Primary CTA buttons, featured cards. Coloured shadow.</div>
+              </div>
+            </div>
+            <div class="elev-row">
+              <div class="elev-box" style="box-shadow:var(--shadow-gold);background:var(--gold-500);"></div>
+              <div>
+                <div class="elev-label">shadow-gold — Accent Glow</div>
+                <div class="elev-desc">Gold accent CTAs. Use sparingly — one per screen max.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Motion Tokens</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="motion-chip"><div class="motion-dot fast"></div><span><strong>150ms ease</strong> — Hover states, button feedback, focus rings</span></div>
+            <div class="motion-chip"><div class="motion-dot med"></div><span><strong>250ms ease</strong> — Nav underlines, badge appears, dropdown open</span></div>
+            <div class="motion-chip"><div class="motion-dot slow"></div><span><strong>400ms ease-in-out</strong> — Mobile drawer, modal, page transitions</span></div>
+          </div>
+          <div class="callout callout-neutral" style="margin-top:16px;">
+            <strong>Motion principle:</strong> Animate in the direction of meaning. Elements entering slide in from their logical origin (nav from top, drawer from left). Never use bounce or spring on political/official UI — it undermines authority.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 8 — PAGE ARCHITECTURE
+    ──────────────────────────────────────── -->
+    <section id="pages" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Page Architecture</div>
+        <h1>Page Templates & Layouts</h1>
+        <p>Every page type follows a defined structure. These wireframes show the anatomy and 60-30-10 color distribution across real page contexts.</p>
+      </div>
+
+      <div class="section-body">
+
+        <!-- Home -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Homepage — Hero Layout</div>
+          <div class="wireframe">
+            <div class="wf-header">
+              <div class="wf-logo-dot"></div>
+              <div class="wf-logo-bar"></div>
+              <div class="wf-nav-pills">
+                <div class="wf-pill"></div><div class="wf-pill"></div><div class="wf-pill"></div><div class="wf-pill"></div>
+              </div>
+              <div style="margin-left:12px;"><div class="wf-cta-pill"></div></div>
+            </div>
+            <div class="wf-hero">
+              <div class="wf-hero-badge"></div>
+              <div class="wf-hero-h1"></div>
+              <div class="wf-hero-h1b"></div>
+              <div class="wf-hero-p"></div>
+              <div class="wf-hero-p2"></div>
+              <div class="wf-hero-btns">
+                <div class="wf-btn-p"></div>
+                <div class="wf-btn-o"></div>
+              </div>
+            </div>
+            <div class="wf-body">
+              <div class="wf-section-label"></div>
+              <div class="wf-section-h"></div>
+              <div class="wf-card-row">
+                <div class="wf-card-sm"><div class="wf-card-line"></div><div class="wf-card-line-sm"></div></div>
+                <div class="wf-card-sm"><div class="wf-card-line"></div><div class="wf-card-line-sm"></div></div>
+                <div class="wf-card-sm"><div class="wf-card-line"></div><div class="wf-card-line-sm"></div></div>
+              </div>
+              <div style="height:12px;"></div>
+              <div class="wf-section-label"></div>
+              <div class="wf-section-h"></div>
+              <div class="wf-card-row">
+                <div class="wf-card-sm"><div class="wf-card-line"></div><div class="wf-card-line-sm"></div></div>
+                <div class="wf-card-sm"><div class="wf-card-line"></div><div class="wf-card-line-sm"></div></div>
+              </div>
+            </div>
+            <div class="wf-footer">
+              <div class="wf-footer-col"><div class="wf-footer-line"></div><div class="wf-footer-line"></div><div class="wf-footer-line-short"></div></div>
+              <div class="wf-footer-col"><div class="wf-footer-line"></div><div class="wf-footer-line-short"></div><div class="wf-footer-line-short"></div></div>
+              <div class="wf-footer-col"><div class="wf-footer-line"></div><div class="wf-footer-line-short"></div><div class="wf-footer-line-short"></div></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;">
+            <div class="callout callout-neutral"><strong>Header (30%)</strong><br>Deep green bg, gold border bottom. Sticky on scroll.</div>
+            <div class="callout callout-green"><strong>Hero (30%)</strong><br>Green-900 to Green-700 gradient. White text. Gold badge + gold primary CTA.</div>
+            <div class="callout callout-gold"><strong>Gold CTAs (10%)</strong><br>One accent button per hero. Never two gold buttons together.</div>
+          </div>
+        </div>
+
+        <!-- Page anatomy breakdown -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Section Anatomy — All Pages</div>
+
+          <div class="anatomy-row"><div class="anatomy-label-col">Global Header</div><div class="anatomy-content"><strong>Green-900 bg</strong> · Gold bottom border · Topbar info strip · Sticky · z-50 · 72px desktop / 56px mobile</div></div>
+          <div class="anatomy-row"><div class="anatomy-label-col">Page Hero</div><div class="anatomy-content"><strong>Green-700 to Green-900 gradient</strong> · Full-width · Min 480px desktop / 320px mobile · Always contains a single gold CTA</div></div>
+          <div class="anatomy-row"><div class="anatomy-label-col">Content Sections</div><div class="anatomy-content"><strong>White or Stone-50 alternating</strong> · 96px top/bottom padding desktop · 48px mobile · Max 1280px content width</div></div>
+          <div class="anatomy-row"><div class="anatomy-label-col">Brand Accent Bands</div><div class="anatomy-content"><strong>Green-50 or Green-700</strong> full-width bands · Used for quotes, CTAs, stat rows · Max 2 per page</div></div>
+          <div class="anatomy-row"><div class="anatomy-label-col">Global Footer</div><div class="anatomy-content"><strong>Green-900 bg</strong> · Gold top border · 4-column grid desktop · 2-col tablet / 1-col mobile · Quote band above</div></div>
+        </div>
+
+        <!-- Responsive breakpoints -->
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Responsive Breakpoints</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);padding:8px 12px;">
+              <span>Breakpoint</span><span>Width</span><span>Key Changes</span>
+            </div>
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;">
+              <span style="font-family:var(--mono);font-weight:700;color:var(--green-700);">mobile</span>
+              <span style="color:var(--text-secondary);">< 640px</span>
+              <span>Hamburger nav, stacked layout, 16px gutters, bottom CTA bars</span>
+            </div>
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;">
+              <span style="font-family:var(--mono);font-weight:700;color:var(--green-700);">sm</span>
+              <span style="color:var(--text-secondary);">640px+</span>
+              <span>2-column grids, topbar visible, expanded footer columns</span>
+            </div>
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;">
+              <span style="font-family:var(--mono);font-weight:700;color:var(--green-700);">md</span>
+              <span style="color:var(--text-secondary);">768px+</span>
+              <span>Full desktop nav, 3-col card grids, 24px gutters</span>
+            </div>
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;">
+              <span style="font-family:var(--mono);font-weight:700;color:var(--green-700);">lg</span>
+              <span style="color:var(--text-secondary);">1024px+</span>
+              <span>4-column footer, sidebar layouts, hero split compositions</span>
+            </div>
+            <div style="display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;">
+              <span style="font-family:var(--mono);font-weight:700;color:var(--green-700);">xl</span>
+              <span style="color:var(--text-secondary);">1280px</span>
+              <span>Max content width reached. Centre-locked. No wider.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 9 — DARK MODE
+    ──────────────────────────────────────── -->
+    <section id="darkmode" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Dark Mode</div>
+        <h1>Dark Theme System</h1>
+        <p>Dark mode uses the Forest Black base (#001a14), muted green surfaces, and a vibrant gold accent. The 60-30-10 ratio is preserved but rebalanced for dark surfaces.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> Dark Mode Ratio</div>
+          <div class="ratio-block">
+            <div class="ratio-seg" style="flex:6;background:#001a14;border-right:1px solid rgba(255,255,255,0.08);">
+              <span class="ratio-seg-pct" style="color:rgba(255,255,255,0.6);">60%</span>
+              <span class="ratio-seg-label" style="color:rgba(255,255,255,0.35);">Forest Black</span>
+            </div>
+            <div class="ratio-seg" style="flex:3;background:#004d3d;">
+              <span class="ratio-seg-pct" style="color:rgba(255,255,255,0.8);">30%</span>
+              <span class="ratio-seg-label" style="color:rgba(255,255,255,0.6);">Deep Green</span>
+            </div>
+            <div class="ratio-seg" style="flex:1;background:#e0b840;">
+              <span class="ratio-seg-pct" style="color:#001a14;font-size:0.9rem;">10%</span>
+              <span class="ratio-seg-label" style="color:#001a14;font-size:0.5rem;">Gold+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> Dark Mode Preview</div>
+          <div class="dark-preview">
+            <!-- Dark Nav preview -->
+            <div style="background:#002d22;border:1px solid rgba(201,162,39,0.2);border-radius:var(--radius-md);padding:16px 20px;display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+              <div style="width:36px;height:36px;border-radius:50%;background:#004d3d;border:2px solid var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.65rem;font-weight:900;color:var(--gold-400);">HSD</div>
+              <div style="display:flex;gap:16px;flex:1;">
+                <span style="font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);">Home</span>
+                <span style="font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-400);border-bottom:1px solid var(--gold-500);">About</span>
+                <span style="font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);">News</span>
+              </div>
+              <div style="padding:6px 16px;background:var(--gold-500);color:var(--green-900);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;border-radius:2px;">Join</div>
+            </div>
+
+            <!-- Dark cards -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+              <div style="background:#002d22;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:16px;border-top:2px solid var(--gold-500);">
+                <div style="font-family:var(--serif);font-size:1.8rem;font-weight:900;color:rgba(255,255,255,0.9);line-height:1;">14,832</div>
+                <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.35);margin-top:4px;">Members</div>
+              </div>
+              <div style="background:#002d22;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:16px;border-top:2px solid var(--gold-500);">
+                <div style="font-family:var(--serif);font-size:1.8rem;font-weight:900;color:rgba(255,255,255,0.9);line-height:1;">36</div>
+                <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.35);margin-top:4px;">States Active</div>
+              </div>
+              <div style="background:#002d22;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:16px;border-top:2px solid var(--gold-500);">
+                <div style="font-family:var(--serif);font-size:1.8rem;font-weight:900;color:rgba(255,255,255,0.9);line-height:1;">120+</div>
+                <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.35);margin-top:4px;">LGAs Reached</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">03</span> Dark Mode Token Map</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;">Light Mode</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:white;border:1px solid var(--border);border-radius:var(--radius-sm);"><span>--surface</span><span style="font-family:var(--mono);color:var(--text-muted);">#ffffff</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:var(--neutral-50);border:1px solid var(--border);border-radius:var(--radius-sm);"><span>--surface-alt</span><span style="font-family:var(--mono);color:var(--text-muted);">#F8F9FA</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:var(--green-700);color:white;border-radius:var(--radius-sm);"><span>--brand</span><span style="font-family:var(--mono);">#004d3d</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:var(--gold-500);color:var(--green-900);border-radius:var(--radius-sm);"><span>--accent</span><span style="font-family:var(--mono);">#c9a227</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:12px;background:var(--green-900);padding:4px 8px;display:inline-block;border-radius:2px;">Dark Mode</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:#001a14;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);"><span>--surface</span><span style="font-family:var(--mono);">#001a14</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:#002d22;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-sm);"><span>--surface-alt</span><span style="font-family:var(--mono);">#002d22</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:#004d3d;color:rgba(255,255,255,0.8);border-radius:var(--radius-sm);"><span>--brand</span><span style="font-family:var(--mono);">#004d3d</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:8px 12px;background:#e0b840;color:#001a14;border-radius:var(--radius-sm);"><span>--accent</span><span style="font-family:var(--mono);">#e0b840</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────
+         SECTION 10 — DESIGN TOKENS CSS
+    ──────────────────────────────────────── -->
+    <section id="tokens" class="page-section">
+      <div class="section-hero">
+        <div class="section-hero-label">Design Tokens</div>
+        <h1>CSS Variables & Tailwind Config</h1>
+        <p>The complete token file. Import this as your global CSS foundation and configure HeroUI to consume these values.</p>
+      </div>
+
+      <div class="section-body">
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">01</span> globals.css — Full Token Set</div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">Copy</button>
+            <pre><span class="c-comment">/* ═══════════════════════════════════
+   HSDNM Design Tokens v1.0
+   60-30-10 Color Architecture
+═══════════════════════════════════ */</span>
+
+<span class="c-key">@layer</span> base {
+  <span class="c-key">:root</span> {
+    <span class="c-comment">/* ── Brand Palette ── */</span>
+    <span class="c-var">--hsd-green-50</span>:  <span class="c-val">#edf9f4</span>;
+    <span class="c-var">--hsd-green-100</span>: <span class="c-val">#d4f2e8</span>;
+    <span class="c-var">--hsd-green-200</span>: <span class="c-val">#a8e4d3</span>;
+    <span class="c-var">--hsd-green-300</span>: <span class="c-val">#4dc4a0</span>;
+    <span class="c-var">--hsd-green-400</span>: <span class="c-val">#1a9e7a</span>;
+    <span class="c-var">--hsd-green-500</span>: <span class="c-val">#007a5e</span>;
+    <span class="c-var">--hsd-green-600</span>: <span class="c-val">#005c48</span>;
+    <span class="c-var">--hsd-green-700</span>: <span class="c-val">#004d3d</span>; <span class="c-comment">/* PRIMARY */</span>
+    <span class="c-var">--hsd-green-800</span>: <span class="c-val">#002d22</span>;
+    <span class="c-var">--hsd-green-900</span>: <span class="c-val">#001a14</span>; <span class="c-comment">/* DARK BASE */</span>
+
+    <span class="c-var">--hsd-gold-50</span>:  <span class="c-val">#fdf6e0</span>;
+    <span class="c-var">--hsd-gold-100</span>: <span class="c-val">#f5e8c0</span>;
+    <span class="c-var">--hsd-gold-200</span>: <span class="c-val">#ecd490</span>;
+    <span class="c-var">--hsd-gold-300</span>: <span class="c-val">#e0c060</span>;
+    <span class="c-var">--hsd-gold-400</span>: <span class="c-val">#d4b040</span>;
+    <span class="c-var">--hsd-gold-500</span>: <span class="c-val">#c9a227</span>; <span class="c-comment">/* ACCENT */</span>
+    <span class="c-var">--hsd-gold-600</span>: <span class="c-val">#b89020</span>;
+    <span class="c-var">--hsd-gold-700</span>: <span class="c-val">#a07d14</span>;
+    <span class="c-var">--hsd-gold-800</span>: <span class="c-val">#7a5000</span>;
+
+    <span class="c-comment">/* ── 60% — Surface Layer ── */</span>
+    <span class="c-var">--background</span>:   <span class="c-val">0 0% 100%</span>;        <span class="c-comment">/* white */</span>
+    <span class="c-var">--foreground</span>:   <span class="c-val">220 20% 8%</span>;
+    <span class="c-var">--card</span>:         <span class="c-val">0 0% 100%</span>;
+    <span class="c-var">--card-foreground</span>: <span class="c-val">220 20% 8%</span>;
+    <span class="c-var">--muted</span>:        <span class="c-val">210 12% 96%</span>;     <span class="c-comment">/* #F8F9FA */</span>
+    <span class="c-var">--muted-foreground</span>: <span class="c-val">215 16% 47%</span>;
+    <span class="c-var">--border</span>:       <span class="c-val">220 14% 90%</span>;
+    <span class="c-var">--input</span>:        <span class="c-val">220 14% 90%</span>;
+
+    <span class="c-comment">/* ── 30% — Brand Layer ── */</span>
+    <span class="c-var">--primary</span>:          <span class="c-val">164 100% 15%</span>; <span class="c-comment">/* #004d3d */</span>
+    <span class="c-var">--primary-foreground</span>: <span class="c-val">0 0% 100%</span>;
+    <span class="c-var">--secondary</span>:        <span class="c-val">164 100% 5%</span>;  <span class="c-comment">/* #001a14 */</span>
+    <span class="c-var">--secondary-foreground</span>: <span class="c-val">0 0% 100%</span>;
+    <span class="c-var">--popover</span>:          <span class="c-val">164 100% 8%</span>;
+    <span class="c-var">--popover-foreground</span>: <span class="c-val">0 0% 95%</span>;
+
+    <span class="c-comment">/* ── 10% — Accent Layer ── */</span>
+    <span class="c-var">--accent</span>:          <span class="c-val">43 68% 47%</span>;  <span class="c-comment">/* #c9a227 */</span>
+    <span class="c-var">--accent-foreground</span>: <span class="c-val">164 100% 5%</span>;
+    <span class="c-var">--ring</span>:            <span class="c-val">164 100% 15%</span>;
+
+    <span class="c-comment">/* ── Semantic ── */</span>
+    <span class="c-var">--destructive</span>:          <span class="c-val">0 72% 51%</span>;
+    <span class="c-var">--destructive-foreground</span>: <span class="c-val">0 0% 100%</span>;
+
+    <span class="c-comment">/* ── Radius ── */</span>
+    <span class="c-var">--radius</span>: <span class="c-val">0.25rem</span>; <span class="c-comment">/* 4px — sharp, authoritative */</span>
+  }
+
+  <span class="c-key">.dark</span> {
+    <span class="c-var">--background</span>:   <span class="c-val">164 100% 5%</span>;  <span class="c-comment">/* #001a14 */</span>
+    <span class="c-var">--foreground</span>:   <span class="c-val">60 9% 92%</span>;
+    <span class="c-var">--card</span>:         <span class="c-val">164 100% 8%</span>;  <span class="c-comment">/* #002d22 */</span>
+    <span class="c-var">--muted</span>:        <span class="c-val">164 80% 10%</span>;
+    <span class="c-var">--border</span>:       <span class="c-val">164 40% 16%</span>;
+    <span class="c-var">--primary</span>:      <span class="c-val">164 100% 15%</span>;
+    <span class="c-var">--accent</span>:       <span class="c-val">43 72% 56%</span>;  <span class="c-comment">/* brighter gold */</span>
+  }
+}</pre>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-title-num">02</span> tailwind.config.ts Extension</div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">Copy</button>
+            <pre><span class="c-key">import</span> type { Config } <span class="c-key">from</span> <span class="c-val">"tailwindcss"</span>;
+
+<span class="c-key">const</span> config: Config = {
+  darkMode: [<span class="c-val">"class"</span>],
+  theme: {
+    extend: {
+      colors: {
+        <span class="c-comment">/* Brand Ramp */</span>
+        green: {
+          <span class="c-val">50</span>:  <span class="c-val">"#edf9f4"</span>,
+          <span class="c-val">700</span>: <span class="c-val">"#004d3d"</span>, <span class="c-comment">/* primary */</span>
+          <span class="c-val">900</span>: <span class="c-val">"#001a14"</span>, <span class="c-comment">/* dark base */</span>
+        },
+        gold: {
+          <span class="c-val">50</span>:  <span class="c-val">"#fdf6e0"</span>,
+          <span class="c-val">500</span>: <span class="c-val">"#c9a227"</span>, <span class="c-comment">/* accent */</span>
+          <span class="c-val">700</span>: <span class="c-val">"#a07d14"</span>,
+        },
+        <span class="c-comment">/* HeroUI semantic bridge */</span>
+        border:     <span class="c-val">"hsl(var(--border))"</span>,
+        background: <span class="c-val">"hsl(var(--background))"</span>,
+        foreground: <span class="c-val">"hsl(var(--foreground))"</span>,
+        primary: {
+          DEFAULT:    <span class="c-val">"hsl(var(--primary))"</span>,
+          foreground: <span class="c-val">"hsl(var(--primary-foreground))"</span>,
+        },
+        accent: {
+          DEFAULT:    <span class="c-val">"hsl(var(--accent))"</span>,
+          foreground: <span class="c-val">"hsl(var(--accent-foreground))"</span>,
+        },
+      },
+      fontFamily: {
+        serif: [<span class="c-val">"Playfair Display"</span>, <span class="c-val">"Georgia"</span>, <span class="c-val">"serif"</span>],
+        sans:  [<span class="c-val">"DM Sans"</span>, <span class="c-val">"system-ui"</span>, <span class="c-val">"sans-serif"</span>],
+        mono:  [<span class="c-val">"DM Mono"</span>, <span class="c-val">"monospace"</span>],
+      },
+      borderRadius: {
+        sm:  <span class="c-val">"var(--radius)"</span>,         <span class="c-comment">/* 4px */</span>
+        md:  <span class="c-val">"calc(var(--radius) * 2)"</span>, <span class="c-comment">/* 8px */</span>
+        lg:  <span class="c-val">"calc(var(--radius) * 3)"</span>, <span class="c-comment">/* 12px */</span>
+        xl:  <span class="c-val">"calc(var(--radius) * 4)"</span>, <span class="c-comment">/* 16px */</span>
+      },
+      maxWidth: {
+        content: <span class="c-val">"1280px"</span>,
+      },
+    },
+  },
+};</pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  document.querySelector('.main-content').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function copyCode(btn) {
+  const pre = btn.nextElementSibling;
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 1800);
+  });
+}
+</script>
+
+</body>
+</html>

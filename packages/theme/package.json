@@ -1,0 +1,9 @@
+{
+  "name": "@hsdnm/theme",
+  "version": "0.1.0",
+  "main": "index.css",
+  "exports": {
+    ".": "./index.css"
+  },
+  "private": true
+}

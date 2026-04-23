@@ -1,0 +1,29 @@
+{
+  "name": "hsdnationalmovement",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:all": "npx turbo dev",
+    "dev:web": "npx turbo dev --filter=@hsdnm/web",
+    "dev:portal": "npx turbo dev --filter=@hsdnm/portal",
+    "build": "npx turbo build",
+    "lint": "npx turbo lint",
+    "typecheck": "npx turbo typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  }
+}

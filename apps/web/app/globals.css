@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@hsdnm/theme";
+
+/* ══════════════════════════════════════════════════════════════
+   HSDNM Web — Global Styles
+   All design tokens defined in @hsdnm/theme (packages/theme/index.css)
+   Tailwind v4: @theme block in @hsdnm/theme controls:
+   - bg-green-*, text-green-*, border-green-*    (full 10-stop green scale)  
+   - bg-gold-*, text-gold-*, border-gold-*       (full 10-stop gold scale)
+   - bg-neutral-*, text-neutral-*                (full 10-stop neutral scale)
+   - font-sans (DM Sans), font-serif (Playfair), font-mono (DM Mono)
+   - shadow-brand, shadow-gold, shadow-institutional
+   - bg-hero-gradient
+══════════════════════════════════════════════════════════════ */
+
+/* Explicit source directives for Tailwind v4 content detection.
+   Paths are relative to this file: apps/web/app/globals.css */
+@source "../../../packages/ui/src/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(201, 162, 39, 0.25);
+    color: inherit;
+  }
+}

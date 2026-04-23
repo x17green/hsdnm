@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@hsdnm/ui": ["./packages/ui/src/index.ts"],
+      "@hsdnm/lib": ["./packages/lib/src/index.ts"],
+      "@hsdnm/db": ["./packages/db/src/index.ts"],
+      "@hsdnm/theme": ["./packages/theme/index.css"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

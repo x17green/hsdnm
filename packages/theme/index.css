@@ -1,0 +1,316 @@
+/* ═══════════════════════════════════════════════════════════════
+   @hsdnm/theme — Design Tokens v2.0
+   HSDNM Brand Guide 2026 · 60-30-10 Color Architecture
+   © 2026 Sen. Henry Seriake Dickson National Movement
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Layer 0: Raw Primitives ─────────────────────────────────
+   These are the source-of-truth hex values from the Brand Guide.
+   Consume via semantic tokens below — never reference raw vars in
+   application code unless building the design system itself.
+─────────────────────────────────────────────────────────────── */
+:root {
+  /* ── Green Scale — HSD Deep Green Ramp ── */
+  --hsd-green-50:  #edf9f4;
+  --hsd-green-100: #d4f2e8;
+  --hsd-green-200: #a8e4d3;
+  --hsd-green-300: #4dc4a0;
+  --hsd-green-400: #1a9e7a;
+  --hsd-green-500: #007a5e;
+  --hsd-green-600: #005c48;
+  --hsd-green-700: #004d3d;   /* ★ HSD Deep Green — PRIMARY (30%) */
+  --hsd-green-800: #002d22;
+  --hsd-green-900: #001a14;   /* ★ Forest Black — Dark Base */
+
+  /* ── Gold Scale — HSD Gold Ramp ── */
+  --hsd-gold-50:  #fdf6e0;
+  --hsd-gold-100: #f5e8c0;
+  --hsd-gold-200: #ecd490;
+  --hsd-gold-300: #e0c060;
+  --hsd-gold-400: #d4b040;
+  --hsd-gold-500: #c9a227;    /* ★ HSD Gold — ACCENT (10%) */
+  --hsd-gold-600: #b89020;
+  --hsd-gold-700: #a07d14;
+  --hsd-gold-800: #7a5000;
+  --hsd-gold-900: #3d2800;
+
+  /* ── Neutral Scale — HSD Foundation Ramp ── */
+  --hsd-neutral-50:  #F8F9FA;  /* ★ HSD Foundation — Surface (60%) */
+  --hsd-neutral-100: #eef0f4;
+  --hsd-neutral-200: #dde0e8;
+  --hsd-neutral-300: #c0c4d0;
+  --hsd-neutral-400: #9499aa;
+  --hsd-neutral-500: #6b7080;
+  --hsd-neutral-600: #4a4f6a;
+  --hsd-neutral-700: #2d3142;
+  --hsd-neutral-800: #1c1e26;
+  --hsd-neutral-900: #0f1117;
+}
+
+/* ─── Layer 1: Tailwind v4 @theme ────────────────────────────
+   These create Tailwind utility classes automatically:
+   --color-green-700  →  bg-green-700, text-green-700, border-green-700
+   --color-gold-500   →  bg-gold-500, text-gold-500, border-gold-500
+─────────────────────────────────────────────────────────────── */
+@theme inline {
+
+  /* ── Typography ── */
+  --font-sans:  "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono:  "DM Mono", ui-monospace, "SFMono-Regular", "Courier New", monospace;
+
+  /* ── Micro Typography Scales ── */
+  --text-2xs: 0.625rem; /* 10px */
+  --text-2xs--line-height: 0.75rem;
+  --text-3xs: 0.5rem; /* 8px */
+  --text-3xs--line-height: 0.625rem;
+  --text-4xs: 0.4375rem; /* 7px */
+  --text-4xs--line-height: 0.5rem;
+  --text-5xs: 0.34375rem; /* 5.5px */
+  --text-5xs--line-height: 0.4rem;
+
+  /* ── Institutional Tracking Proportions ── */
+  --tracking-10: 0.1em;
+  --tracking-12: 0.12em;
+  --tracking-15: 0.15em;
+  --tracking-16: 0.16em;
+  --tracking-18: 0.18em;
+  --tracking-20: 0.2em;
+  --tracking-30: 0.3em;
+  --tracking-40: 0.4em;
+
+  /* ── Green Color Scale → Tailwind utilities ── */
+  --color-green-50:  var(--hsd-green-50);
+  --color-green-100: var(--hsd-green-100);
+  --color-green-200: var(--hsd-green-200);
+  --color-green-300: var(--hsd-green-300);
+  --color-green-400: var(--hsd-green-400);
+  --color-green-500: var(--hsd-green-500);
+  --color-green-600: var(--hsd-green-600);
+  --color-green-700: var(--hsd-green-700);
+  --color-green-800: var(--hsd-green-800);
+  --color-green-900: var(--hsd-green-900);
+
+  /* ── Gold Color Scale → Tailwind utilities ── */
+  --color-gold-50:  var(--hsd-gold-50);
+  --color-gold-100: var(--hsd-gold-100);
+  --color-gold-200: var(--hsd-gold-200);
+  --color-gold-300: var(--hsd-gold-300);
+  --color-gold-400: var(--hsd-gold-400);
+  --color-gold-500: var(--hsd-gold-500);
+  --color-gold-600: var(--hsd-gold-600);
+  --color-gold-700: var(--hsd-gold-700);
+  --color-gold-800: var(--hsd-gold-800);
+  --color-gold-900: var(--hsd-gold-900);
+
+  /* ── Neutral Color Scale → Tailwind utilities ── */
+  --color-neutral-50:  var(--hsd-neutral-50);
+  --color-neutral-100: var(--hsd-neutral-100);
+  --color-neutral-200: var(--hsd-neutral-200);
+  --color-neutral-300: var(--hsd-neutral-300);
+  --color-neutral-400: var(--hsd-neutral-400);
+  --color-neutral-500: var(--hsd-neutral-500);
+  --color-neutral-600: var(--hsd-neutral-600);
+  --color-neutral-700: var(--hsd-neutral-700);
+  --color-neutral-800: var(--hsd-neutral-800);
+  --color-neutral-900: var(--hsd-neutral-900);
+
+  /* ── 60% — Surface Layer (HeroUI + Tailwind semantic) ── */
+  --color-background:      #ffffff;
+  --color-foreground:      var(--hsd-neutral-900);
+  --color-card:            #ffffff;
+  --color-card-foreground: var(--hsd-neutral-900);
+  --color-muted:           var(--hsd-neutral-50);
+  --color-muted-foreground: var(--hsd-neutral-500);
+  --color-secondary:            var(--hsd-neutral-100);
+  --color-secondary-foreground: var(--hsd-neutral-900);
+
+  /* ── 30% — Brand Layer ── */
+  --color-primary:             var(--hsd-green-700);  /* #004d3d */
+  --color-primary-foreground:  #ffffff;
+  --color-popover:             var(--hsd-green-800);
+  --color-popover-foreground:  #ffffff;
+
+  /* ── 10% — Accent Layer ── */
+  --color-accent:            var(--hsd-gold-500);     /* #c9a227 */
+  --color-accent-foreground: var(--hsd-green-900);    /* #001a14 */
+
+  /* ── Utility ── */
+  --color-border:  var(--hsd-neutral-200);
+  --color-input:   var(--hsd-neutral-200);
+  --color-ring:    var(--hsd-green-700);
+  --color-destructive:            #dc2626;
+  --color-destructive-foreground: #ffffff;
+
+  /* ── HeroUI Compatibility Tokens ── */
+  --color-content1:  #ffffff;
+  --color-content2:  var(--hsd-neutral-50);
+  --color-content3:  var(--hsd-neutral-100);
+  --color-divider:   var(--hsd-neutral-200);
+  --color-success:   #22c55e;
+  --color-warning:   #f59e0b;
+  --color-danger:    #ef4444;
+  --color-info:      #3b82f6;
+
+  /* ── Border Radius — Brand Guide Spec ──
+     Buttons/badges: --radius-sm (2px)
+     Inputs/chips: --radius-md (4px)
+     Cards: --radius-lg (8px)
+     Feature: --radius-xl (16px)
+  ── */
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-md: 0.25rem;  /* 4px */
+  --radius-lg: 0.5rem;   /* 8px */
+  --radius-xl: 1rem;     /* 16px */
+  --radius:    var(--radius-md);
+
+  /* ── Spacing Scale ── */
+  /* Inherits Tailwind defaults; brand uses 4px base unit */
+  --spacing-sidebar: 260px;
+  --spacing-13: 3.25rem; /* 52px */
+  --spacing-id-size: 4.5rem; /* 72px */
+
+  /* ── Layout Dimensions ── */
+  --aspect-id-card: 1.586 / 1;
+}
+
+/* ─── Layer 2: Semantic Aliases ──────────────────────────────
+   Convenient shorthands used by Layout/Section components.
+   These are NOT Tailwind utilities — they are CSS custom props.
+─────────────────────────────────────────────────────────────── */
+:root {
+  --brand:           var(--hsd-green-700);   /* 30% — primary brand presence */
+  --brand-dark:      var(--hsd-green-900);   /* dark mode base */
+  --brand-muted:     var(--hsd-green-50);    /* tint surfaces */
+  --accent:          var(--hsd-gold-500);    /* 10% — CTA highlights */
+  --accent-hover:    var(--hsd-gold-400);
+  --accent-text:     var(--hsd-gold-700);    /* text on gold-50 bg */
+  --text-on-brand:   #ffffff;
+  --text-on-accent:  var(--hsd-green-900);
+  --border-brand:    var(--hsd-green-700);
+  --border-accent:   var(--hsd-gold-500);
+
+  /* ── Layout Showcase Bridge Tokens ── */
+  --hsd-green:       var(--hsd-green-700);
+  --hsd-green-dark:  var(--hsd-green-900);
+  --hsd-green-light: var(--hsd-green-500);
+  --hsd-gold:        var(--hsd-gold-500);
+  --hsd-gold-dark:   var(--hsd-gold-700);
+  --hsd-gold-50:     var(--hsd-gold-50);
+  --hsd-green-bg:    var(--hsd-green-50);
+  --hsd-serif:       var(--font-serif);
+  --hsd-sans:        var(--font-sans);
+  --hsd-stone:       var(--hsd-neutral-50);
+  --hsd-border:      var(--hsd-neutral-200);
+
+  /* ── Shadow Scale (correct base color: #004d3d) ── */
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:    0 4px 12px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.07);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-brand: 0 4px 20px rgba(0,77,61,0.25);   /* #004d3d based */
+  --shadow-gold:  0 4px 20px rgba(201,162,39,0.30); /* #c9a227 based */
+}
+
+/* ─── Dark Mode Overrides ─────────────────────────────────── */
+.dark {
+  --color-background:       var(--hsd-green-900);   /* #001a14 */
+  --color-foreground:       rgba(255, 255, 255, 0.9);
+  --color-card:             var(--hsd-green-800);   /* #002d22 */
+  --color-card-foreground:  rgba(255, 255, 255, 0.9);
+  --color-muted:            var(--hsd-green-800);
+  --color-muted-foreground: rgba(255, 255, 255, 0.45);
+  --color-border:           rgba(255, 255, 255, 0.08);
+  --color-input:            rgba(255, 255, 255, 0.10);
+  --color-primary:          var(--hsd-green-700);
+  --color-accent:           #e0b840;  /* brighter gold for dark mode legibility */
+  --color-accent-foreground: var(--hsd-green-900);
+  --color-content1:         var(--hsd-green-800);
+  --color-divider:          rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Base Layer ─────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ─── Utility Layer ─────────────────────────────────────────
+   Custom brand utilities not covered by Tailwind defaults.
+─────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Hero gradient — Forest Black → HSD Deep Green */
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, var(--hsd-green-900) 0%, var(--hsd-green-700) 100%);
+  }
+
+  /* Brand shadows */
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-institutional {
+    box-shadow: 0 20px 60px -15px rgba(0, 77, 61, 0.12);
+  }
+
+  /* Entrance animation for key sections */
+  .animate-brand-fade {
+    animation: brandFade 0.55s ease both;
+  }
+
+  /* Gold accent underline decoration */
+  .decoration-gold {
+    text-decoration-color: var(--hsd-gold-500);
+  }
+
+  /* Brand badge patterns */
+  .badge-hsd-green {
+    @apply bg-green-50 text-green-700 border border-green-200;
+  }
+
+  .badge-hsd-gold {
+    @apply bg-gold-50 text-gold-700 border border-gold-200;
+  }
+
+  .badge-hsd-neutral {
+    @apply bg-neutral-100 text-neutral-600 border border-neutral-200;
+  }
+}
+
+/* ─── Keyframes ─────────────────────────────────────────── */
+@keyframes brandFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

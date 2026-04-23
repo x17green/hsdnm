@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HSDNM Full SDLC v2 — Sen. Henry Seriake Dickson National Movement</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --hsd-green: #1a5c36;
+    --hsd-green-2: #2a7a49;
+    --hsd-green-bg: #e8f5ee;
+    --hsd-green-border: #a3d6b8;
+    --hsd-gold: #c9a227;
+    --hsd-gold-2: #e0b840;
+    --hsd-gold-bg: #fdf6e0;
+    --hsd-gold-border: #e5cc7a;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f6f2;
+    --text-primary: #1a1916;
+    --text-secondary: #6b6963;
+    --text-tertiary: #9b9890;
+    --border-tertiary: rgba(26,25,22,0.12);
+    --border-secondary: rgba(26,25,22,0.22);
+    --bg-info: #e6f1fb;
+    --text-info: #185fa5;
+    --border-info: #b5d4f4;
+    --bg-danger: #fcebeb;
+    --text-danger: #a32d2d;
+    --border-danger: #f7c1c1;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --hsd-green-bg: #0d2e1b;
+      --hsd-green-border: #1a5c36;
+      --hsd-gold-bg: #2a200a;
+      --hsd-gold-border: #7a5e08;
+      --bg-primary: #1c1b18;
+      --bg-secondary: #242320;
+      --text-primary: #e8e6df;
+      --text-secondary: #9b9890;
+      --text-tertiary: #6b6963;
+      --border-tertiary: rgba(232,230,223,0.12);
+      --border-secondary: rgba(232,230,223,0.22);
+      --bg-info: #042c53;
+      --text-info: #85b7eb;
+      --border-info: #0c447c;
+      --bg-danger: #501313;
+      --text-danger: #f09595;
+      --border-danger: #791f1f;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 1.5rem 1rem;
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+  }
+
+  /* ── Hero banner ── */
+  .hero {
+    border: 0.5px solid var(--hsd-green-border);
+    background: var(--hsd-green-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+  .hero-logo {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--hsd-green); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 16px; font-weight: 500; color: var(--hsd-gold-2);
+    border: 2px solid var(--hsd-gold);
+  }
+  .hero h1 { font-size: 18px; font-weight: 500; margin-bottom: 3px; color: var(--text-primary); }
+  .hero p { font-size: 12px; color: var(--text-secondary); }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .htag {
+    font-size: 11px; padding: 2px 9px; border-radius: 4px; font-weight: 500;
+    background: var(--hsd-green); color: var(--hsd-gold-2);
+  }
+  .htag.gold { background: var(--hsd-gold-bg); color: #7a5e08; border: 0.5px solid var(--hsd-gold-border); }
+
+  /* ── Nav ── */
+  .nav { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 1.25rem; }
+  .nb {
+    background: none; border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-md); padding: 5px 13px; font-size: 12px;
+    cursor: pointer; color: var(--text-secondary); white-space: nowrap;
+    font-family: var(--font-sans); transition: all 0.15s;
+  }
+  .nb:hover { background: var(--bg-primary); color: var(--text-primary); }
+  .nb.on { background: var(--hsd-green); color: var(--hsd-gold-2); border-color: var(--hsd-green); }
+
+  /* ── Panel ── */
+  .panel { display: none; }
+  .panel.on { display: block; }
+
+  /* ── Section ── */
+  .sec { margin-bottom: 1.5rem; }
+  .sec-t {
+    font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-secondary); margin-bottom: 0.75rem; padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--border-tertiary);
+  }
+
+  /* ── Alert ── */
+  .alert {
+    border-radius: var(--radius-md); padding: 10px 14px; font-size: 13px;
+    border: 0.5px solid; margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .alert.green { background: var(--hsd-green-bg); border-color: var(--hsd-green-border); color: var(--text-primary); }
+  .alert.gold { background: var(--hsd-gold-bg); border-color: var(--hsd-gold-border); color: var(--text-primary); }
+  .alert.red { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+  .alert.blue { background: var(--bg-info); border-color: var(--border-info); color: var(--text-info); }
+  .alert-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Cards ── */
+  .cg { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .cg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 500px) { .cg2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--bg-primary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-lg); padding: 1rem 1.1rem;
+  }
+  .card.green-l { border-color: var(--hsd-green-border); background: var(--hsd-green-bg); }
+  .card.gold-l { border-color: var(--hsd-gold-border); background: var(--hsd-gold-bg); }
+  .ct { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+
+  /* ── Table ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl th {
+    text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--text-secondary);
+    padding: 7px 10px; border-bottom: 0.5px solid var(--border-tertiary);
+  }
+  .tbl td { padding: 9px 10px; border-bottom: 0.5px solid var(--border-tertiary); vertical-align: top; color: var(--text-primary); }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr:hover td { background: var(--bg-secondary); }
+
+  /* ── Badge ── */
+  .b { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .b-g { background: var(--hsd-green-bg); color: var(--hsd-green); }
+  .b-o { background: var(--hsd-gold-bg); color: #7a5e08; }
+  .b-bl { background: var(--bg-info); color: var(--text-info); }
+  .b-r { background: var(--bg-danger); color: var(--text-danger); }
+  .b-gr { background: var(--bg-secondary); color: var(--text-secondary); }
+
+  /* ── Role hierarchy ── */
+  .rh { display: flex; flex-direction: column; gap: 5px; }
+  .rn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 13px; background: var(--bg-primary);
+    border: 0.5px solid var(--border-tertiary); border-radius: var(--radius-md); font-size: 13px;
+  }
+  .rn.top { background: var(--hsd-green-bg); border-color: var(--hsd-green-border); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .rname { font-weight: 500; min-width: 200px; }
+  .rscope { font-size: 12px; color: var(--text-secondary); flex: 1; }
+  .rcount { font-size: 12px; font-weight: 500; }
+  .i1 { margin-left: 18px; }
+  .i2 { margin-left: 36px; }
+  .i3 { margin-left: 54px; }
+  .i4 { margin-left: 72px; }
+
+  /* ── Code ── */
+  .code {
+    background: var(--bg-secondary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-md); padding: 1rem; font-family: var(--font-mono);
+    font-size: 12px; overflow-x: auto; line-height: 1.75; color: var(--text-primary);
+    white-space: pre; margin-bottom: 1rem;
+  }
+  .kw { color: #7c3aed; } .str { color: #059669; }
+  .cmt { color: var(--text-tertiary); font-style: italic; }
+  .ty { color: #d97706; } .fn { color: #2563eb; }
+
+  /* ── Phase accordion ── */
+  .phases { display: flex; flex-direction: column; gap: 8px; }
+  .ph {
+    background: var(--bg-primary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-lg); overflow: hidden; cursor: pointer;
+  }
+  .ph-h { display: flex; align-items: center; gap: 12px; padding: 11px 14px; }
+  .ph-num {
+    width: 26px; height: 26px; border-radius: 50%; background: var(--hsd-green);
+    color: var(--hsd-gold-2); font-size: 12px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .ph-title { font-size: 13px; font-weight: 500; flex: 1; color: var(--text-primary); }
+  .ph-dur { font-size: 11px; color: var(--text-secondary); }
+  .ph-body {
+    display: none; padding: 0 14px 12px 52px; font-size: 13px; color: var(--text-secondary);
+    border-top: 0.5px solid var(--border-tertiary);
+  }
+  .ph.open .ph-body { display: block; padding-top: 10px; }
+  .ptag {
+    display: inline-block; background: var(--bg-secondary);
+    border: 0.5px solid var(--border-tertiary); border-radius: 4px;
+    font-size: 11px; padding: 2px 8px; margin: 3px 3px 3px 0; color: var(--text-secondary);
+  }
+  .ptag.g { background: var(--hsd-green-bg); color: var(--hsd-green); border-color: var(--hsd-green-border); }
+  .ptag.o { background: var(--hsd-gold-bg); color: #7a5e08; border-color: var(--hsd-gold-border); }
+  .ptag.r { background: var(--bg-danger); color: var(--text-danger); border-color: var(--border-danger); }
+
+  /* ── Checklist ── */
+  .cl-list { display: flex; flex-direction: column; gap: 7px; }
+  .cli { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text-primary); }
+  .ci-g { color: var(--hsd-green); font-weight: 500; flex-shrink: 0; margin-top: 1px; }
+  .ci-o { color: var(--hsd-gold); font-weight: 500; flex-shrink: 0; margin-top: 1px; }
+  .ci-r { color: #dc2626; font-weight: 500; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Reg steps ── */
+  .rsteps { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .rs {
+    background: var(--bg-primary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-lg); padding: 1rem; text-align: center;
+  }
+  .rs-n {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--hsd-green);
+    color: var(--hsd-gold-2); font-size: 13px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+  }
+  .rs-t { font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary); }
+  .rs-d { font-size: 11px; color: var(--text-secondary); }
+
+  /* ── Sprint board ── */
+  .sb { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 10px; }
+  .sc {
+    background: var(--bg-secondary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-lg); padding: 10px;
+  }
+  .sct { font-size: 12px; font-weight: 500; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 0.5px solid var(--border-tertiary); color: var(--text-primary); }
+  .st {
+    background: var(--bg-primary); border: 0.5px solid var(--border-tertiary);
+    border-radius: var(--radius-md); padding: 6px 8px; font-size: 11px; margin-bottom: 5px;
+    color: var(--text-primary);
+  }
+  .st:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-logo">HSD</div>
+    <div style="flex:1">
+      <h1>Sen. Henry Seriake Dickson National Movement</h1>
+      <p>HSDNM Digital Platform — Full SDLC · Based on Operating Manual + Architecture Design</p>
+      <div class="hero-tags">
+        <span class="htag">Next.js 14</span>
+        <span class="htag">TypeScript</span>
+        <span class="htag">Prisma</span>
+        <span class="htag">Supabase</span>
+        <span class="htag gold">NIN-backed Identity</span>
+        <span class="htag gold">5-tier RBAC</span>
+        <span class="htag gold">PWA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="nav">
+    <button class="nb on" onclick="sw('org')">Org Structure</button>
+    <button class="nb" onclick="sw('sites')">Sites & Architecture</button>
+    <button class="nb" onclick="sw('schema')">DB Schema</button>
+    <button class="nb" onclick="sw('rbac')">RBAC Matrix</button>
+    <button class="nb" onclick="sw('reg')">Registration Flow</button>
+    <button class="nb" onclick="sw('phases')">Build Phases</button>
+    <button class="nb" onclick="sw('security')">Security</button>
+    <button class="nb" onclick="sw('infra')">Infra & Deploy</button>
+  </div>
+
+  <!-- ─── ORG STRUCTURE ─── -->
+  <div id="p-org" class="panel on">
+    <div class="alert green">
+      <span class="alert-icon">📋</span>
+      <span>Org structure sourced directly from the HSDNM Independent Operating Manual. Digital platform roles map 1-to-1 with the movement's physical hierarchy.</span>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Movement leadership (from operating manual)</div>
+      <table class="tbl">
+        <thead><tr><th>Manual Role</th><th>Platform Role</th><th>Scope</th><th>Seats</th></tr></thead>
+        <tbody>
+          <tr><td>National Leadership Council</td><td><span class="b b-g">SUPER_ADMIN</span></td><td>Full national access — all data, all regions</td><td>1–3</td></tr>
+          <tr><td>Director of Mobilization</td><td><span class="b b-g">SUPER_ADMIN</span></td><td>National membership oversight</td><td>1</td></tr>
+          <tr><td>Director of Communications</td><td><span class="b b-o">COMMUNICATIONS_ADMIN</span></td><td>Content, announcements, news</td><td>1</td></tr>
+          <tr><td>Director of Strategy &amp; Policy</td><td><span class="b b-o">SUPER_ADMIN</span></td><td>Analytics, national reports</td><td>1</td></tr>
+          <tr><td>State Chapters (37 + FCT)</td><td><span class="b b-bl">STATE_COORDINATOR</span></td><td>State-scoped member data only</td><td>37</td></tr>
+          <tr><td>Local Government Units (~774)</td><td><span class="b b-bl">LGA_COORDINATOR</span></td><td>LGA-scoped member data only</td><td>~774</td></tr>
+          <tr><td>Ward Coordinators</td><td><span class="b b-gr">WARD_COORDINATOR</span></td><td>Ward-level view (Phase 2+)</td><td>Thousands</td></tr>
+          <tr><td>General Members</td><td><span class="b b-gr">MEMBER</span></td><td>Own profile only</td><td>Unlimited</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Digital role hierarchy</div>
+      <div class="rh">
+        <div class="rn top">
+          <div class="dot" style="background:#1a5c36"></div>
+          <div class="rname">Super Admin</div>
+          <div class="rscope">National Leadership Council — full platform access</div>
+          <div class="rcount" style="color:#1a5c36">1–3 seats</div>
+        </div>
+        <div class="rn i1">
+          <div class="dot" style="background:#2a7a49"></div>
+          <div class="rname">Regional Coordinator</div>
+          <div class="rscope">One of 6 geopolitical zones (NW, NE, NC, SW, SE, SS)</div>
+          <div class="rcount" style="color:#2a7a49">6 seats</div>
+        </div>
+        <div class="rn i2">
+          <div class="dot" style="background:#c9a227"></div>
+          <div class="rname">State Coordinator</div>
+          <div class="rscope">One state chapter — per operating manual Section 4.2</div>
+          <div class="rcount" style="color:#c9a227">37 seats</div>
+        </div>
+        <div class="rn i3">
+          <div class="dot" style="background:#a07a10"></div>
+          <div class="rname">LGA Coordinator</div>
+          <div class="rscope">Local Government Unit — per manual Section 4.3</div>
+          <div class="rcount" style="color:#a07a10">~774 seats</div>
+        </div>
+        <div class="rn i4">
+          <div class="dot" style="background:#888"></div>
+          <div class="rname">Ward Coordinator</div>
+          <div class="rscope">Closest link to grassroots — per manual Section 4.4</div>
+          <div class="rcount" style="color:#888">Thousands</div>
+        </div>
+        <div class="rn i4" style="margin-left:90px">
+          <div class="dot" style="background:#ccc"></div>
+          <div class="rname">Member</div>
+          <div class="rscope">Open to all Nigerians who believe in democratic values</div>
+          <div class="rcount" style="color:#aaa">Unlimited</div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Membership criteria (from operating manual Section 6)</div>
+      <div class="cg2">
+        <div class="card">
+          <div class="ct">Requirements</div>
+          <div class="cl-list">
+            <div class="cli"><span class="ci-g">✓</span><span>Commitment to the movement's vision</span></div>
+            <div class="cli"><span class="ci-g">✓</span><span>Willingness to participate in activities</span></div>
+            <div class="cli"><span class="ci-g">✓</span><span>Respect for internal leadership processes</span></div>
+            <div class="cli"><span class="ci-g">✓</span><span>Nigerian citizen (NIN verification)</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">Code of conduct (platform-enforced)</div>
+          <div class="cl-list">
+            <div class="cli"><span class="ci-o">!</span><span>No actions that bring disrepute to movement</span></div>
+            <div class="cli"><span class="ci-o">!</span><span>Internal disputes via established channels only</span></div>
+            <div class="cli"><span class="ci-o">!</span><span>No unauthorized public statements on behalf of movement</span></div>
+            <div class="cli"><span class="ci-r">!</span><span>Disciplinary action: warning → suspension → removal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SITES & ARCHITECTURE ─── -->
+  <div id="p-sites" class="panel">
+    <div class="sec">
+      <div class="sec-t">Two-domain architecture</div>
+      <div class="cg2">
+        <div class="card green-l">
+          <div class="ct" style="color:var(--hsd-green)">hsdnationalmovement.com</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Public face of the movement — PWA</div>
+          <div class="cl-list">
+            <div class="cli"><span class="ci-g">→</span><span>Landing — vision, mission, values (from manual Section 2–3)</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>About the movement &amp; Senator Dickson</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>News &amp; official statements (comms-controlled)</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>Town hall events calendar</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>Volunteer / Join CTA → portal</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>Policy positions (strategy office)</span></div>
+            <div class="cli"><span class="ci-g">→</span><span>Donate (Phase 3)</span></div>
+          </div>
+        </div>
+        <div class="card gold-l">
+          <div class="ct" style="color:#7a5e08">portal.hsdnationalmovement.com</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Membership engine + coordinator dashboards — PWA</div>
+          <div class="cl-list">
+            <div class="cli"><span class="ci-o">→</span><span>NIN-based member registration</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>Profile management + photo upload</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>Digital membership card + QR code</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>RBAC dashboards (all coordinator tiers)</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>Growth analytics by zone</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>SMS broadcast tool (Termii)</span></div>
+            <div class="cli"><span class="ci-o">→</span><span>Monthly reporting (per manual Section 12)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Monorepo structure</div>
+      <div class="code"><span class="cmt">// Turborepo + pnpm workspace</span>
+hsdnm-platform/
+├── apps/
+│   ├── <span class="str">web/</span>            <span class="cmt">← hsdnationalmovement.com (Next.js 14, App Router)</span>
+│   └── <span class="str">portal/</span>         <span class="cmt">← portal.hsdnationalmovement.com (Next.js 14, App Router)</span>
+├── packages/
+│   ├── <span class="str">db/</span>             <span class="cmt">← Prisma schema, migrations, seed data</span>
+│   ├── <span class="str">auth/</span>           <span class="cmt">← Supabase auth helpers, session management</span>
+│   ├── <span class="str">rbac/</span>           <span class="cmt">← Role logic, scope enforcement, permission guards</span>
+│   ├── <span class="str">geo/</span>            <span class="cmt">← Region/State/LGA/Ward seed + cascade helpers</span>
+│   ├── <span class="str">sms/</span>            <span class="cmt">← Termii integration, templates, OTP</span>
+│   └── <span class="str">ui/</span>             <span class="cmt">← Shared design system (green/gold brand)</span>
+├── turbo.json
+└── pnpm-workspace.yaml</div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Tech stack</div>
+      <table class="tbl">
+        <thead><tr><th>Layer</th><th>Technology</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Framework</td><td><span class="b b-bl">Next.js 14 App Router</span></td><td>SSR, API routes, PWA, edge middleware</td></tr>
+          <tr><td>Language</td><td><span class="b b-bl">TypeScript</span></td><td>Type-safe RBAC, Prisma typed queries</td></tr>
+          <tr><td>ORM</td><td><span class="b b-bl">Prisma</span></td><td>Typed DB queries, migrations, Supabase compat</td></tr>
+          <tr><td>Database</td><td><span class="b b-bl">Supabase (Postgres)</span></td><td>RLS, Auth, Realtime, Storage — Africa region</td></tr>
+          <tr><td>Auth</td><td><span class="b b-bl">Supabase Auth</span></td><td>Phone OTP via Termii SMTP hook</td></tr>
+          <tr><td>Styling</td><td><span class="b b-bl">Tailwind CSS</span></td><td>HSD green/gold brand tokens</td></tr>
+          <tr><td>State</td><td><span class="b b-bl">Zustand</span></td><td>Dashboard state, coordinator filters</td></tr>
+          <tr><td>SMS/OTP</td><td><span class="b b-g">Termii</span></td><td>Nigerian-first. Africa's Talking as backup.</td></tr>
+          <tr><td>NIN Verification</td><td><span class="b b-g">Dojah / Prembly</span></td><td>Licensed NIMC aggregators — legal access</td></tr>
+          <tr><td>File storage</td><td><span class="b b-bl">Supabase Storage</span></td><td>Profile photos, exports — role-scoped buckets</td></tr>
+          <tr><td>Hosting</td><td><span class="b b-bl">Vercel</span></td><td>Zero-config Next.js, global CDN, edge functions</td></tr>
+          <tr><td>Errors</td><td><span class="b b-gr">Sentry</span></td><td>Both apps instrumented</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── DB SCHEMA ─── -->
+  <div id="p-schema" class="panel">
+    <div class="alert blue">
+      <span class="alert-icon">ℹ</span>
+      <span>Schema maps directly to the 4-level organizational structure defined in HSDNM Operating Manual Section 4: National → State → LGA → Ward.</span>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Model overview</div>
+      <table class="tbl">
+        <thead><tr><th>Model</th><th>Key fields</th><th>Relations</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Region</strong></td><td>id, name</td><td>→ State[]</td><td>6 Nigerian geopolitical zones</td></tr>
+          <tr><td><strong>State</strong></td><td>id, name, regionId</td><td>→ LGA[], ← Region</td><td>37 states + FCT</td></tr>
+          <tr><td><strong>LGA</strong></td><td>id, name, stateId</td><td>→ Ward[], ← State</td><td>~774 LGAs</td></tr>
+          <tr><td><strong>Ward</strong></td><td>id, name, lgaId</td><td>→ User[], ← LGA</td><td>Per manual Section 4.4</td></tr>
+          <tr><td><strong>User</strong></td><td>ninHash, name, phone, role, geo FKs</td><td>→ Coordinator?, Activity[]</td><td>Core identity. NIN never stored raw.</td></tr>
+          <tr><td><strong>Coordinator</strong></td><td>userId, role, scopeId</td><td>← User (1:1)</td><td>Privilege layer, separate from identity</td></tr>
+          <tr><td><strong>Activity</strong></td><td>userId, action, metadata</td><td>← User</td><td>REGISTERED, ATTENDED_EVENT, REFERRED_USER</td></tr>
+          <tr><td><strong>AuditLog</strong></td><td>actorId, action, targetId, ip</td><td>← User (actor)</td><td>Every admin action logged (manual Section 10)</td></tr>
+          <tr><td><strong>Announcement</strong></td><td>title, body, authorId, scope</td><td>← User (author)</td><td>For Director of Comms — targeted broadcasts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Full Prisma schema</div>
+      <div class="code"><span class="kw">generator</span> client { provider = <span class="str">"prisma-client-js"</span> }
+<span class="kw">datasource</span> db { provider = <span class="str">"postgresql"</span>; url = <span class="fn">env</span>(<span class="str">"DATABASE_URL"</span>) }
+
+<span class="kw">enum</span> <span class="ty">Role</span> {
+  SUPER_ADMIN
+  REGIONAL_COORDINATOR
+  STATE_COORDINATOR
+  LGA_COORDINATOR
+  WARD_COORDINATOR
+  MEMBER
+}
+<span class="kw">enum</span> <span class="ty">Gender</span>         { MALE  FEMALE  OTHER }
+<span class="kw">enum</span> <span class="ty">MemberStatus</span>   { ACTIVE  SUSPENDED  REMOVED }   <span class="cmt">// per manual §11</span>
+
+<span class="kw">model</span> <span class="ty">Region</span> {
+  id           <span class="ty">String</span>        @id @default(<span class="fn">uuid</span>())
+  name         <span class="ty">String</span>        @unique   <span class="cmt">// e.g. "South-South"</span>
+  states       <span class="ty">State</span>[]
+  coordinators <span class="ty">Coordinator</span>[]
+  users        <span class="ty">User</span>[]
+  createdAt    <span class="ty">DateTime</span>      @default(<span class="fn">now</span>())
+}
+
+<span class="kw">model</span> <span class="ty">State</span> {
+  id           <span class="ty">String</span>        @id @default(<span class="fn">uuid</span>())
+  name         <span class="ty">String</span>
+  regionId     <span class="ty">String</span>
+  region       <span class="ty">Region</span>        @relation(fields: [regionId], references: [id])
+  lgas         <span class="ty">LGA</span>[]
+  coordinators <span class="ty">Coordinator</span>[]
+  users        <span class="ty">User</span>[]
+  createdAt    <span class="ty">DateTime</span>      @default(<span class="fn">now</span>())
+  @@unique([name, regionId])
+  @@index([regionId])
+}
+
+<span class="kw">model</span> <span class="ty">LGA</span> {
+  id           <span class="ty">String</span>        @id @default(<span class="fn">uuid</span>())
+  name         <span class="ty">String</span>
+  stateId      <span class="ty">String</span>
+  state        <span class="ty">State</span>         @relation(fields: [stateId], references: [id])
+  wards        <span class="ty">Ward</span>[]
+  coordinators <span class="ty">Coordinator</span>[]
+  users        <span class="ty">User</span>[]
+  createdAt    <span class="ty">DateTime</span>      @default(<span class="fn">now</span>())
+  @@unique([name, stateId])
+  @@index([stateId])
+}
+
+<span class="kw">model</span> <span class="ty">Ward</span> {
+  id           <span class="ty">String</span>        @id @default(<span class="fn">uuid</span>())
+  name         <span class="ty">String</span>
+  lgaId        <span class="ty">String</span>
+  lga          <span class="ty">LGA</span>           @relation(fields: [lgaId], references: [id])
+  coordinators <span class="ty">Coordinator</span>[]
+  users        <span class="ty">User</span>[]
+  createdAt    <span class="ty">DateTime</span>      @default(<span class="fn">now</span>())
+  @@unique([name, lgaId])
+  @@index([lgaId])
+}
+
+<span class="kw">model</span> <span class="ty">User</span> {
+  id              <span class="ty">String</span>        @id @default(<span class="fn">uuid</span>())
+  <span class="cmt">// NIN is SHA-256 hashed, NEVER stored raw</span>
+  ninHash         <span class="ty">String</span>        @unique
+  firstName       <span class="ty">String</span>
+  lastName        <span class="ty">String</span>
+  middleName      <span class="ty">String</span>?
+  gender          <span class="ty">Gender</span>?
+  dateOfBirth     <span class="ty">DateTime</span>?
+  phone           <span class="ty">String</span>        @unique
+  email           <span class="ty">String</span>?       @unique
+  profilePhoto    <span class="ty">String</span>?
+  membershipId    <span class="ty">String</span>?       @unique  <span class="cmt">// e.g. "HSD-SS-BYS-0001"</span>
+  status          <span class="ty">MemberStatus</span>  @default(ACTIVE)
+
+  regionId        <span class="ty">String</span>?
+  stateId         <span class="ty">String</span>?
+  lgaId           <span class="ty">String</span>?
+  wardId          <span class="ty">String</span>?
+  region          <span class="ty">Region</span>?       @relation(fields: [regionId], references: [id])
+  state           <span class="ty">State</span>?        @relation(fields: [stateId], references: [id])
+  lga             <span class="ty">LGA</span>?          @relation(fields: [lgaId], references: [id])
+  ward            <span class="ty">Ward</span>?         @relation(fields: [wardId], references: [id])
+
+  role            <span class="ty">Role</span>          @default(MEMBER)
+  isNINVerified   <span class="ty">Boolean</span>       @default(<span class="kw">false</span>)
+  referralCode    <span class="ty">String</span>?       @unique
+  referredById    <span class="ty">String</span>?
+  referredBy      <span class="ty">User</span>?         @relation(<span class="str">"Referral"</span>, fields: [referredById], references: [id])
+  referrals       <span class="ty">User</span>[]        @relation(<span class="str">"Referral"</span>)
+
+  coordinator     <span class="ty">Coordinator</span>?
+  activities      <span class="ty">Activity</span>[]
+  auditLogs       <span class="ty">AuditLog</span>[]
+  announcements   <span class="ty">Announcement</span>[]
+
+  createdAt       <span class="ty">DateTime</span>      @default(<span class="fn">now</span>())
+  updatedAt       <span class="ty">DateTime</span>      @updatedAt
+
+  @@index([stateId])
+  @@index([lgaId])
+  @@index([wardId])
+  @@index([role])
+  @@index([status])
+  @@index([referredById])
+}
+
+<span class="kw">model</span> <span class="ty">Coordinator</span> {
+  id        <span class="ty">String</span>    @id @default(<span class="fn">uuid</span>())
+  userId    <span class="ty">String</span>    @unique
+  user      <span class="ty">User</span>      @relation(fields: [userId], references: [id])
+  role      <span class="ty">Role</span>
+  regionId  <span class="ty">String</span>?
+  stateId   <span class="ty">String</span>?
+  lgaId     <span class="ty">String</span>?
+  wardId    <span class="ty">String</span>?
+  region    <span class="ty">Region</span>?   @relation(fields: [regionId], references: [id])
+  state     <span class="ty">State</span>?    @relation(fields: [stateId], references: [id])
+  lga       <span class="ty">LGA</span>?      @relation(fields: [lgaId], references: [id])
+  ward      <span class="ty">Ward</span>?     @relation(fields: [wardId], references: [id])
+  createdAt <span class="ty">DateTime</span>  @default(<span class="fn">now</span>())
+}
+
+<span class="kw">model</span> <span class="ty">Activity</span> {
+  id        <span class="ty">String</span>   @id @default(<span class="fn">uuid</span>())
+  userId    <span class="ty">String</span>
+  user      <span class="ty">User</span>     @relation(fields: [userId], references: [id])
+  action    <span class="ty">String</span>
+  metadata  <span class="ty">Json</span>?
+  createdAt <span class="ty">DateTime</span> @default(<span class="fn">now</span>())
+  @@index([userId])
+  @@index([createdAt])
+}
+
+<span class="kw">model</span> <span class="ty">AuditLog</span> {
+  id        <span class="ty">String</span>   @id @default(<span class="fn">uuid</span>())
+  actorId   <span class="ty">String</span>
+  actor     <span class="ty">User</span>     @relation(fields: [actorId], references: [id])
+  action    <span class="ty">String</span>
+  targetId  <span class="ty">String</span>?
+  metadata  <span class="ty">Json</span>?
+  ipAddress <span class="ty">String</span>?
+  createdAt <span class="ty">DateTime</span> @default(<span class="fn">now</span>())
+  @@index([actorId])
+  @@index([createdAt])
+}
+
+<span class="kw">model</span> <span class="ty">Announcement</span> {
+  id         <span class="ty">String</span>   @id @default(<span class="fn">uuid</span>())
+  title      <span class="ty">String</span>
+  body       <span class="ty">String</span>
+  authorId   <span class="ty">String</span>
+  author     <span class="ty">User</span>     @relation(fields: [authorId], references: [id])
+  scope      <span class="ty">String</span>   @default(<span class="str">"NATIONAL"</span>)
+  published  <span class="ty">Boolean</span>  @default(<span class="kw">false</span>)
+  createdAt  <span class="ty">DateTime</span> @default(<span class="fn">now</span>())
+  @@index([authorId])
+  @@index([createdAt])
+}</div>
+    </div>
+  </div>
+
+  <!-- ─── RBAC ─── -->
+  <div id="p-rbac" class="panel">
+    <div class="sec">
+      <div class="sec-t">Scope enforcement middleware</div>
+      <div class="code"><span class="cmt">// packages/rbac/src/scopeQuery.ts</span>
+<span class="kw">import type</span> { <span class="ty">Session</span> } <span class="kw">from</span> <span class="str">'@hsdnm/auth'</span>
+
+<span class="kw">export function</span> <span class="fn">buildMemberScope</span>(session: <span class="ty">Session</span>) {
+  <span class="kw">if</span> (!session?.coordinator) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">'Unauthorized'</span>)
+  <span class="kw">const</span> { role, regionId, stateId, lgaId, wardId } = session.coordinator
+
+  <span class="kw">switch</span> (role) {
+    <span class="kw">case</span> <span class="str">'SUPER_ADMIN'</span>:          <span class="kw">return</span> {}
+    <span class="kw">case</span> <span class="str">'REGIONAL_COORDINATOR'</span>: <span class="kw">return</span> { regionId }
+    <span class="kw">case</span> <span class="str">'STATE_COORDINATOR'</span>:    <span class="kw">return</span> { stateId }
+    <span class="kw">case</span> <span class="str">'LGA_COORDINATOR'</span>:      <span class="kw">return</span> { lgaId }
+    <span class="kw">case</span> <span class="str">'WARD_COORDINATOR'</span>:     <span class="kw">return</span> { wardId }
+    <span class="kw">default</span>: <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">'Unauthorized'</span>)
+  }
+}
+
+<span class="cmt">// Usage — scope every query, never trust frontend filters</span>
+<span class="kw">const</span> members = <span class="kw">await</span> prisma.user.<span class="fn">findMany</span>({
+  where: { ...<span class="fn">buildMemberScope</span>(session), role: <span class="str">'MEMBER'</span>, status: <span class="str">'ACTIVE'</span> },
+  include: { state: <span class="kw">true</span>, lga: <span class="kw">true</span>, ward: <span class="kw">true</span> }
+})</div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Permission matrix</div>
+      <table class="tbl">
+        <thead><tr><th>Action</th><th>Super Admin</th><th>Regional</th><th>State</th><th>LGA</th><th>Ward</th><th>Member</th></tr></thead>
+        <tbody>
+          <tr><td>View all members</td><td>✓ National</td><td>✓ Region</td><td>✓ State</td><td>✓ LGA</td><td>✓ Ward</td><td>—</td></tr>
+          <tr><td>Dashboard stats</td><td>✓ National</td><td>✓ Region</td><td>✓ State</td><td>✓ LGA</td><td>Limited</td><td>—</td></tr>
+          <tr><td>Assign coordinators</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Suspend / remove member</td><td>✓</td><td>Own region</td><td>Own state</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Export member data</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+          <tr><td>Send SMS broadcast</td><td>✓</td><td>Own region</td><td>Own state</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Post announcements</td><td>✓</td><td>Own region</td><td>Own state</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>View audit logs</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Monthly reports</td><td>✓ All</td><td>✓ Region</td><td>✓ State</td><td>✓ LGA</td><td>—</td><td>—</td></tr>
+          <tr><td>Edit own profile</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Download membership card</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── REGISTRATION ─── -->
+  <div id="p-reg" class="panel">
+    <div class="alert gold">
+      <span class="alert-icon">⚠</span>
+      <span>NIMC and INEC APIs are not publicly open. Use a licensed aggregator (Dojah/Prembly) with manual form fallback. Geo-data uses internal seeded DB, not INEC API.</span>
+    </div>
+    <div class="sec">
+      <div class="sec-t">5-step registration flow</div>
+      <div class="rsteps">
+        <div class="rs"><div class="rs-n">1</div><div class="rs-t">NIN Entry</div><div class="rs-d">11-digit NIN input. Hashed server-side immediately. Duplicate check before any API call.</div></div>
+        <div class="rs"><div class="rs-n">2</div><div class="rs-t">Identity Fetch</div><div class="rs-d">NIMC via Dojah/Prembly aggregator. Returns name, DOB, gender. Manual fallback if API down.</div></div>
+        <div class="rs"><div class="rs-n">3</div><div class="rs-t">Profile Review</div><div class="rs-d">User confirms pre-filled data. Adds phone (OTP verified), email, profile photo.</div></div>
+        <div class="rs"><div class="rs-n">4</div><div class="rs-t">Geo Selection</div><div class="rs-d">Cascade dropdowns: Region → State → LGA → Ward. From internal seeded DB.</div></div>
+        <div class="rs"><div class="rs-n">5</div><div class="rs-t">Membership Card</div><div class="rs-d">Unique member ID generated (HSD-SS-BYS-0001). QR code card issued. SMS confirmation.</div></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">NIN lookup with resilient fallback</div>
+      <div class="code"><span class="cmt">// apps/portal/src/lib/nin.ts</span>
+<span class="kw">async function</span> <span class="fn">lookupNIN</span>(nin: <span class="ty">string</span>) {
+  <span class="kw">const</span> ninHash = <span class="fn">sha256</span>(nin + process.env.NIN_HASH_SALT)
+
+  <span class="kw">const</span> existing = <span class="kw">await</span> prisma.user.<span class="fn">findUnique</span>({ where: { ninHash } })
+  <span class="kw">if</span> (existing) <span class="kw">throw new</span> <span class="fn">ConflictError</span>(<span class="str">'NIN already registered'</span>)
+
+  <span class="kw">try</span> {
+    <span class="kw">const</span> data = <span class="kw">await</span> <span class="fn">dojahNINLookup</span>(nin)
+    <span class="kw">return</span> { source: <span class="str">'nimc'</span>, ninHash, ...data, requiresManualEntry: <span class="kw">false</span> }
+  } <span class="kw">catch</span> {
+    <span class="kw">return</span> { source: <span class="str">'manual'</span>, ninHash, requiresManualEntry: <span class="kw">true</span> }
+  }
+}
+
+<span class="cmt">// Member ID: HSD-{REGION_CODE}-{STATE_CODE}-{SEQUENCE}</span>
+<span class="kw">function</span> <span class="fn">generateMembershipId</span>(regionCode: <span class="ty">string</span>, stateCode: <span class="ty">string</span>, seq: <span class="ty">number</span>) {
+  <span class="kw">return</span> <span class="str">`HSD-${regionCode}-${stateCode}-${seq.toString().padStart(4, '0')}`</span>
+}</div>
+    </div>
+  </div>
+
+  <!-- ─── PHASES ─── -->
+  <div id="p-phases" class="panel">
+    <div class="sec">
+      <div class="sec-t">Build phases — click any to expand</div>
+      <div class="phases">
+        <div class="ph" onclick="tp(this)">
+          <div class="ph-h"><div class="ph-num">1</div><div class="ph-title">Foundation & Public Site MVP</div><div class="ph-dur">Weeks 1–4</div></div>
+          <div class="ph-body">
+            <p style="margin-bottom:8px">Deployable skeleton. Manual registration. Public landing page live.</p>
+            <span class="ptag g">Turborepo + pnpm setup</span><span class="ptag g">Supabase + Prisma init</span><span class="ptag g">All 37 states + 774 LGAs seeded</span><span class="ptag g">Phone OTP auth (Supabase + Termii)</span><span class="ptag g">Public landing page (web)</span><span class="ptag g">Manual registration form (portal)</span><span class="ptag g">Basic member profile page</span><span class="ptag o">Vercel deploy pipeline</span><span class="ptag o">Super admin seed account</span>
+          </div>
+        </div>
+        <div class="ph" onclick="tp(this)">
+          <div class="ph-h"><div class="ph-num">2</div><div class="ph-title">NIN Integration & Digital Card</div><div class="ph-dur">Weeks 5–8</div></div>
+          <div class="ph-body">
+            <p style="margin-bottom:8px">Real identity verification. Profile photo upload. Membership card issued.</p>
+            <span class="ptag g">Dojah/Prembly NIN aggregator</span><span class="ptag g">Manual fallback flow</span><span class="ptag g">Profile photo upload (Supabase Storage)</span><span class="ptag g">Ward seeding (all wards)</span><span class="ptag g">Cascade geo dropdowns</span><span class="ptag g">Digital membership card + QR code</span><span class="ptag g">Unique member ID (HSD-SS-BYS-0001)</span><span class="ptag o">Referral code assignment on registration</span>
+          </div>
+        </div>
+        <div class="ph" onclick="tp(this)">
+          <div class="ph-h"><div class="ph-num">3</div><div class="ph-title">RBAC & Coordinator Dashboards</div><div class="ph-dur">Weeks 9–13</div></div>
+          <div class="ph-body">
+            <p style="margin-bottom:8px">The political intelligence layer. Scoped views for all 5 coordinator tiers.</p>
+            <span class="ptag g">RBAC middleware (all 6 roles)</span><span class="ptag g">Super admin panel + coordinator assignment</span><span class="ptag g">Regional coordinator dashboard</span><span class="ptag g">State coordinator dashboard</span><span class="ptag g">LGA coordinator dashboard</span><span class="ptag g">Ward coordinator view</span><span class="ptag g">Member search + filter (scoped)</span><span class="ptag g">Suspension / removal flow (manual §11)</span><span class="ptag o">Audit log viewer (super admin)</span>
+          </div>
+        </div>
+        <div class="ph" onclick="tp(this)">
+          <div class="ph-h"><div class="ph-num">4</div><div class="ph-title">Analytics, Comms & Growth</div><div class="ph-dur">Weeks 14–17</div></div>
+          <div class="ph-body">
+            <p style="margin-bottom:8px">Turn data into actionable political intelligence. Enable the Director of Comms workflow.</p>
+            <span class="ptag g">Registration growth charts</span><span class="ptag g">Members by ward heatmap</span><span class="ptag g">Weak zone identification</span><span class="ptag g">Top recruiters leaderboard</span><span class="ptag g">Referral network view</span><span class="ptag g">Announcement system (comms team)</span><span class="ptag g">SMS broadcast tool (Termii, scoped)</span><span class="ptag o">CSV/Excel export (scoped)</span><span class="ptag o">Monthly report generation (manual §12)</span>
+          </div>
+        </div>
+        <div class="ph" onclick="tp(this)">
+          <div class="ph-h"><div class="ph-num">5</div><div class="ph-title">Hardening, Compliance & PWA</div><div class="ph-dur">Weeks 18–21</div></div>
+          <div class="ph-body">
+            <p style="margin-bottom:8px">Security audit, NDPR compliance, offline capability for rural coordinators.</p>
+            <span class="ptag r">Security penetration test</span><span class="ptag r">NDPR compliance review</span><span class="ptag r">Legal review: NIN data processing agreement</span><span class="ptag g">Supabase RLS policies</span><span class="ptag g">PWA offline registration (IndexedDB sync)</span><span class="ptag g">Upstash Redis caching</span><span class="ptag g">Sentry + Logtail instrumentation</span><span class="ptag o">Load test: simulate 500K members</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Sprint breakdown — phase 1</div>
+      <div class="sb">
+        <div class="sc"><div class="sct">Sprint 1 · Week 1–2</div><div class="st">Monorepo init (Turborepo)</div><div class="st">Supabase project + Prisma schema</div><div class="st">Phone OTP auth</div><div class="st">User + Coordinator models</div></div>
+        <div class="sc"><div class="sct">Sprint 2 · Week 2–3</div><div class="st">Geo seed: 37 states + 774 LGAs</div><div class="st">Public landing page</div><div class="st">Manual registration form</div><div class="st">Member profile page</div></div>
+        <div class="sc"><div class="sct">Sprint 3 · Week 3–4</div><div class="st">Vercel deployment pipeline</div><div class="st">Env + secrets management</div><div class="st">Basic RBAC middleware</div><div class="st">Super admin seed</div></div>
+        <div class="sc"><div class="sct">Sprint 4 · Week 4</div><div class="st">E2E test: registration flow</div><div class="st">Rate limiting on NIN API</div><div class="st">MVP demo + stakeholder review</div><div class="st">Phase 2 backlog grooming</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECURITY ─── -->
+  <div id="p-security" class="panel">
+    <div class="alert red">
+      <span class="alert-icon">!</span>
+      <span>You are handling NIN — one of the most sensitive personal data categories in Nigeria. These controls are non-negotiable before any public launch.</span>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Critical security controls</div>
+      <div class="cl-list">
+        <div class="cli"><span class="ci-r">!</span><span><strong>NIN never stored raw</strong> — SHA-256 with salt, server-side only, original discarded immediately</span></div>
+        <div class="cli"><span class="ci-r">!</span><span><strong>RBAC enforced server-side only</strong> — never trust frontend filters, scope at Prisma query level</span></div>
+        <div class="cli"><span class="ci-r">!</span><span><strong>Supabase RLS policies</strong> — Row Level Security mirrors application RBAC as a second defence layer</span></div>
+        <div class="cli"><span class="ci-r">!</span><span><strong>Rate-limit NIN endpoint</strong> — max 3 attempts per IP per hour, hard lockout after 5</span></div>
+        <div class="cli"><span class="ci-r">!</span><span><strong>NDPR compliance</strong> — document data purpose, retention policy, member deletion rights</span></div>
+        <div class="cli"><span class="ci-o">!</span><span>Audit log every admin action: who acted, on which record, from which IP (manual §10)</span></div>
+        <div class="cli"><span class="ci-o">!</span><span>PII fields encrypted at rest (phone, email) using Supabase Vault or pgcrypto</span></div>
+        <div class="cli"><span class="ci-o">!</span><span>Profile photos to Supabase Storage only — never user-controlled public URLs</span></div>
+        <div class="cli"><span class="ci-g">✓</span><span>Input validation with Zod on every API route</span></div>
+        <div class="cli"><span class="ci-g">✓</span><span>HTTPS enforced by Vercel automatically on both domains</span></div>
+        <div class="cli"><span class="ci-g">✓</span><span>SUPABASE_SERVICE_ROLE_KEY is server-side only, never exposed to client</span></div>
+        <div class="cli"><span class="ci-g">✓</span><span>MemberStatus enum (ACTIVE/SUSPENDED/REMOVED) enforces manual §11 disciplinary process</span></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Supabase RLS example — state coordinator scope</div>
+      <div class="code"><span class="cmt">-- State coordinators can SELECT only members in their state</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"state_coord_read_members"</span>
+  <span class="kw">ON</span> users <span class="kw">FOR SELECT</span>
+  <span class="kw">USING</span> (
+    auth.<span class="fn">jwt</span>() ->> <span class="str">'role'</span> = <span class="str">'STATE_COORDINATOR'</span>
+    <span class="kw">AND</span> state_id = (
+      <span class="kw">SELECT</span> state_id <span class="kw">FROM</span> coordinators
+      <span class="kw">WHERE</span> user_id = auth.<span class="fn">uid</span>()
+    )
+  );
+
+<span class="cmt">-- Members can only read their own record</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"member_read_own"</span>
+  <span class="kw">ON</span> users <span class="kw">FOR SELECT</span>
+  <span class="kw">USING</span> (id = auth.<span class="fn">uid</span>());</div>
+    </div>
+  </div>
+
+  <!-- ─── INFRA ─── -->
+  <div id="p-infra" class="panel">
+    <div class="sec">
+      <div class="sec-t">Deployment targets</div>
+      <table class="tbl">
+        <thead><tr><th>Service</th><th>Platform</th><th>Config</th></tr></thead>
+        <tbody>
+          <tr><td>Public site</td><td><span class="b b-bl">Vercel</span></td><td>hsdnationalmovement.com — ISR, PWA manifest</td></tr>
+          <tr><td>Portal app</td><td><span class="b b-bl">Vercel</span></td><td>portal.hsdnationalmovement.com — SSR, PWA</td></tr>
+          <tr><td>Database</td><td><span class="b b-g">Supabase</span></td><td>Postgres, Africa region (Lagos), RLS enabled</td></tr>
+          <tr><td>Auth</td><td><span class="b b-g">Supabase Auth</span></td><td>Phone OTP → Termii SMTP hook</td></tr>
+          <tr><td>File storage</td><td><span class="b b-g">Supabase Storage</span></td><td>profile-photos bucket, role-scoped policies</td></tr>
+          <tr><td>SMS / OTP</td><td><span class="b b-o">Termii</span></td><td>Primary — Africa's Talking as fallback</td></tr>
+          <tr><td>NIN lookup</td><td><span class="b b-o">Dojah / Prembly</span></td><td>Licensed NIMC aggregator</td></tr>
+          <tr><td>Error tracking</td><td><span class="b b-gr">Sentry</span></td><td>Both apps, source maps on build</td></tr>
+          <tr><td>Logging</td><td><span class="b b-gr">Axiom / Logtail</span></td><td>Structured logs from all API routes</td></tr>
+          <tr><td>Analytics</td><td><span class="b b-gr">Posthog</span></td><td>Self-hosted option for data privacy</td></tr>
+          <tr><td>Cache (Phase 5)</td><td><span class="b b-gr">Upstash Redis</span></td><td>Dashboard stat caching, rate limit counters</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Key environment variables</div>
+      <div class="code"><span class="cmt"># apps/portal/.env.local</span>
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=        <span class="cmt"># server-side only — NEVER expose to client</span>
+DATABASE_URL=                     <span class="cmt"># Prisma connection string (pooled)</span>
+DIRECT_URL=                       <span class="cmt"># Prisma migration connection (non-pooled)</span>
+NIN_HASH_SALT=                    <span class="cmt"># Random 64-char string — consistent across deploys</span>
+DOJAH_API_KEY=
+DOJAH_APP_ID=
+TERMII_API_KEY=
+TERMII_SENDER_ID=HSD
+NEXT_PUBLIC_APP_URL=https://portal.hsdnationalmovement.com</div>
+    </div>
+    <div class="sec">
+      <div class="sec-t">Scale milestones</div>
+      <div class="cl-list">
+        <div class="cli"><span class="ci-g">✓</span><span>0–100K members: Vercel + Supabase free/pro handles this with proper indexing</span></div>
+        <div class="cli"><span class="ci-g">✓</span><span>100K–500K: Add Upstash Redis for stat caching, Supabase PgBouncer connection pooling</span></div>
+        <div class="cli"><span class="ci-o">!</span><span>500K–1M: Supabase read replica, Vercel edge functions, BullMQ for async SMS jobs</span></div>
+        <div class="cli"><span class="ci-o">!</span><span>1M+: Consider microservices split for NIN lookup and SMS — keep core on monolith</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.wrap -->
+
+<script>
+function sw(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('on'));
+  document.getElementById('p-' + id).classList.add('on');
+  event.target.classList.add('on');
+}
+function tp(el) { el.classList.toggle('open'); }
+</script>
+</body>
+</html>

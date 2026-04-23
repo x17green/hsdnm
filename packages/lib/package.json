@@ -1,0 +1,16 @@
+{
+  "name": "@hsdnm/lib",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3"
+  }
+}

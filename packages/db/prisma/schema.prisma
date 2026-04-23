@@ -1,0 +1,174 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  COMMUNICATIONS_ADMIN
+  REGIONAL_COORDINATOR
+  STATE_COORDINATOR
+  LGA_COORDINATOR
+  WARD_COORDINATOR
+  MEMBER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum MemberStatus {
+  ACTIVE
+  SUSPENDED
+  REMOVED
+}
+
+model Region {
+  id           String        @id @default(uuid())
+  name         String        @unique // e.g. "South-South"
+  states       State[]
+  coordinators Coordinator[]
+  users        User[]
+  createdAt    DateTime      @default(now())
+}
+
+model State {
+  id           String        @id @default(uuid())
+  name         String
+  code         String?       @unique // e.g. "BYS"
+  regionId     String
+  region       Region        @relation(fields: [regionId], references: [id])
+  lgas         LGA[]
+  coordinators Coordinator[]
+  users        User[]
+  createdAt    DateTime      @default(now())
+  @@unique([name, regionId])
+  @@index([regionId])
+}
+
+model LGA {
+  id           String        @id @default(uuid())
+  name         String
+  stateId      String
+  state        State         @relation(fields: [stateId], references: [id])
+  wards        Ward[]
+  coordinators Coordinator[]
+  users        User[]
+  bounds       Json?         // Stores Leaflet-calculated bounds
+  createdAt    DateTime      @default(now())
+  @@unique([name, stateId])
+  @@index([stateId])
+}
+
+model Ward {
+  id           String        @id @default(uuid())
+  name         String
+  lgaId        String
+  lga          LGA           @relation(fields: [lgaId], references: [id])
+  coordinators Coordinator[]
+  users        User[]
+  createdAt    DateTime      @default(now())
+  @@unique([name, lgaId])
+  @@index([lgaId])
+}
+
+model User {
+  id              String        @id @default(uuid())
+  ninHash         String        @unique // SHA-256 hashed NIN
+  firstName       String
+  lastName        String
+  middleName      String?
+  gender          Gender?
+  dateOfBirth     DateTime?
+  phone           String        @unique
+  email           String?       @unique
+  profilePhoto    String?
+  membershipId    String?       @unique // e.g. "HSD-SS-BYS-0001"
+  status          MemberStatus  @default(ACTIVE)
+
+  regionId        String?
+  stateId         String?
+  lgaId           String?
+  wardId          String?
+  region          Region?       @relation(fields: [regionId], references: [id])
+  state           State?        @relation(fields: [stateId], references: [id])
+  lga             LGA?          @relation(fields: [lgaId], references: [id])
+  ward            Ward?         @relation(fields: [wardId], references: [id])
+
+  role            Role          @default(MEMBER)
+  isNINVerified   Boolean       @default(false)
+  referralCode    String?       @unique
+  
+  activities      Activity[]
+  auditLogs       AuditLog[]
+  announcements   Announcement[]
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([stateId])
+  @@index([lgaId])
+  @@index([wardId])
+  @@index([role])
+  @@index([status])
+}
+
+model Coordinator {
+  id        String    @id @default(uuid())
+  userId    String    @unique
+  user      User      @relation(fields: [userId], references: [id])
+  role      Role
+  regionId  String?
+  stateId   String?
+  lgaId     String?
+  wardId    String?
+  region    Region?   @relation(fields: [regionId], references: [id])
+  state     State?    @relation(fields: [stateId], references: [id])
+  lga       LGA?      @relation(fields: [lgaId], references: [id])
+  ward      Ward?     @relation(fields: [wardId], references: [id])
+  createdAt DateTime  @default(now())
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String   // REGISTERED, ATTENDED_EVENT, etc.
+  metadata  Json?
+  createdAt DateTime @default(now())
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  actorId   String
+  actor     User     @relation(fields: [actorId], references: [id])
+  action    String
+  targetId  String?
+  metadata  Json?
+  ipAddress String?
+  createdAt DateTime @default(now())
+  @@index([actorId])
+  @@index([createdAt])
+}
+
+model Announcement {
+  id         String   @id @default(uuid())
+  title      String
+  body       String
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id])
+  scope      String   @default("NATIONAL") // NATIONAL, REGIONAL, STATE
+  scopeId    String?  // The specific ID for the scope
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  @@index([authorId])
+  @@index([createdAt])
+}
