@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Header, Footer, Section, Container, Heading, Text, Logo, Surface, Stack, Flex, Grid, cn, getPortalLink } from "@hsdnm/ui"
+import { Header, Footer, Section, Container, Heading, Text, Logo, Surface, Stack, Flex, Grid, cn, getPortalLink, Button as HSDButton } from "@hsdnm/ui"
 import { Card, Button, Pagination } from "@heroui/react"
 import { Calendar, ArrowRight } from "lucide-react"
 
@@ -65,7 +65,28 @@ export default function NewsPage() {
 
   return (
     <Surface className="flex min-h-screen flex-col font-sans animate-brand-fade">
-      <Header />
+      <Header>
+        <Surface className="flex items-center gap-8">
+          <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+            Home
+          </Link>
+          <Link href="/about" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+            About
+          </Link>
+          <Link href="/policy" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+             Policy
+          </Link>
+          <Link href="/events" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+             Events
+          </Link>
+          <Link href="/news" className="text-xs font-semibold uppercase tracking-widest text-gold-500 font-bold transition-colors">
+             News
+          </Link>
+          <HSDButton variant="accent" className="flex items-center justify-center h-10 px-5 text-xs tracking-wider" as={Link} href={getPortalLink("/register")}>
+            Join Movement
+          </HSDButton>
+        </Surface>
+      </Header>
 
       <Surface className="flex-1 w-full bg-neutral-50 overflow-hidden">
         {/* Banner Section */}
@@ -177,14 +198,22 @@ export default function NewsPage() {
         <Stack gap="md">
           <Heading level={4} className="text-white m-0">Platform</Heading>
           <Stack gap="sm">
-            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors">The Vision</Link>
-            <Link href="/policy" className="text-white/60 hover:text-white text-sm transition-colors">Policy Positions</Link>
-            <Link href="/news" className="text-gold-500 font-bold text-sm transition-colors">News & Press</Link>
+            {[
+              { label: "The Vision", href: "/" },
+              { label: "About", href: "/about" },
+              { label: "Policy Positions", href: "/policy" },
+              { label: "Town Hall Events", href: "/events" },
+            ].map((l) => (
+              <Link key={l.label} href={l.href} className="text-white/60 hover:text-white text-sm transition-colors">
+                {l.label}
+              </Link>
+            ))}
           </Stack>
         </Stack>
         <Stack gap="md">
           <Heading level={4} className="text-white m-0">Network</Heading>
           <Stack gap="sm">
+            <Link href="/news" className="text-gold-500 font-bold text-sm transition-colors">News & Press</Link>
             <Link href={getPortalLink("/dashboard")} className="text-white/60 hover:text-white text-sm transition-colors">Secure Portal</Link>
             <Link href={getPortalLink("/register")} className="text-white/60 hover:text-white text-sm transition-colors">Member Registry</Link>
             <Link href="/contact" className="text-white/60 hover:text-white text-sm transition-colors">Institutional Support</Link>

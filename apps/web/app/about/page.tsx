@@ -1,12 +1,11 @@
+"use client"
+
+import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { Header, Footer, Section, Container, Heading, Text, Logo, Surface, Stack, getPortalLink } from "@hsdnm/ui"
+import { Header, Footer, Section, Container, Heading, Text, Logo, Surface, Stack, getPortalLink, Button as HSDButton } from "@hsdnm/ui"
 import { Card, Separator } from "@heroui/react"
 import { BookOpen, Map, Users, Target, ShieldCheck } from "lucide-react"
-
-export const metadata = {
-  title: "About the Movement | HSDNM",
-  description: "Learn about the vision, history, and structural blueprint of the Sen. Henry Seriake Dickson National Movement.",
-}
 
 export default function AboutPage() {
   const tiers = [
@@ -18,7 +17,28 @@ export default function AboutPage() {
 
   return (
     <Surface className="flex min-h-screen flex-col font-sans">
-      <Header />
+      <Header>
+        <Surface className="flex items-center gap-8">
+          <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+            Home
+          </Link>
+          <Link href="/about" className="text-xs font-semibold uppercase tracking-widest text-gold-500 font-bold transition-colors">
+            About
+          </Link>
+          <Link href="/policy" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+             Policy
+          </Link>
+          <Link href="/events" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+             Events
+          </Link>
+          <Link href="/news" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+             News
+          </Link>
+          <HSDButton variant="accent" className="flex items-center justify-center h-10 px-5 text-xs tracking-wider" as={Link} href={getPortalLink("/register")}>
+            Join Movement
+          </HSDButton>
+        </Surface>
+      </Header>
 
       <Surface className="flex-1 w-full bg-neutral-50 overflow-hidden">
         {/* Banner Section */}
@@ -55,15 +75,17 @@ export default function AboutPage() {
               </Stack>
               
               <Surface className="lg:col-span-6 order-1 lg:order-2 flex justify-center lg:justify-end">
-                <Surface className="relative w-full max-w-md aspect-[3/4] bg-neutral-100 rounded-sm overflow-hidden shadow-xl border border-neutral-200">
-                  <Surface className="absolute inset-0 bg-green-900/5 mix-blend-multiply">{null}</Surface>
-                  {/* Placeholder for real portrait */}
-                  <Surface className="absolute inset-0 flex flex-col items-center justify-center text-neutral-300">
-                    <BookOpen className="size-20 mb-4 opacity-50" />
-                    <Text variant="xs" className="font-sans uppercase tracking-widest font-bold">Official Portrait</Text>
-                  </Surface>
-                  <Surface className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-green-900 to-transparent p-6 pt-20">
-                    <Text className="text-gold-500 m-0 font-serif italic text-lg opacity-90">
+                <Surface className="relative w-full max-w-md aspect-[3/4] bg-neutral-100 rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+                  <Image 
+                    src="/principal-dickson.jpg" 
+                    alt="Senator Henry Seriake Dickson"
+                    fill
+                    className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                  <Surface className="absolute inset-0 bg-green-900/5 mix-blend-multiply pointer-events-none">{null}</Surface>
+                  <Surface className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-green-900/90 via-green-900/40 to-transparent p-6 pt-24">
+                    <Text className="text-gold-500 m-0 font-serif italic text-lg opacity-90 leading-tight">
                       "Governance is a trust; an institutional mandate to build the future."
                     </Text>
                   </Surface>
@@ -121,19 +143,25 @@ export default function AboutPage() {
       <Footer>
         <Stack gap="md">
           <Heading level={4} className="text-white m-0">Platform</Heading>
-          <Stack gap="sm">
-            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors">The Vision</Link>
-            <Link href="/policy" className="text-white/60 hover:text-white text-sm transition-colors">Policy Positions</Link>
-            <Link href="/news" className="text-white/60 hover:text-white text-sm transition-colors">News & Press</Link>
-          </Stack>
+          <Surface className="flex flex-col gap-3">
+            {[
+              { label: "The Vision", href: "/" },
+              { label: "Policy Positions", href: "/policy" },
+              { label: "Town Hall Events", href: "/events" },
+              { label: "Institutional Support", href: "/contact" },
+            ].map((l) => (
+              <Link key={l.label} href={l.href} className="text-sm text-white/60 hover:text-white transition-colors">
+                {l.label}
+              </Link>
+            ))}
+          </Surface>
         </Stack>
         <Stack gap="md">
           <Heading level={4} className="text-white m-0">Network</Heading>
-          <Stack gap="sm">
+          <Surface className="flex flex-col gap-3">
             <Link href={getPortalLink("/dashboard")} className="text-white/60 hover:text-white text-sm transition-colors">Secure Portal</Link>
             <Link href={getPortalLink("/register")} className="text-white/60 hover:text-white text-sm transition-colors">Member Registry</Link>
-            <Link href="/contact" className="text-white/60 hover:text-white text-sm transition-colors">Institutional Support</Link>
-          </Stack>
+          </Surface>
         </Stack>
       </Footer>
     </Surface>

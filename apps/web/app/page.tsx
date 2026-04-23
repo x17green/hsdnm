@@ -129,7 +129,13 @@ export default function LandingPage() {
           <Link href="#values" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
             Core Values
           </Link>
-          <Link href="#news" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
+          <Link href="/policy" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden lg:block">
+            Policy
+          </Link>
+          <Link href="/events" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden lg:block">
+            Events
+          </Link>
+          <Link href="/news" className="text-xs font-semibold uppercase tracking-widest text-white/70 hover:text-white transition-colors hidden md:block">
             News
           </Link>
           <HSDButton variant="accent" className="flex items-center justify-center h-10 px-5 text-xs tracking-wider" as={Link} href={getPortalLink("/register")}>
@@ -402,10 +408,11 @@ export default function LandingPage() {
           </Heading>
           <Surface className="flex flex-col gap-3">
             {[
-              { label: "Vision & Mission", href: "#mission" },
-              { label: "Core Values", href: "#values" },
-              { label: "Organisational Structure", href: "#structure" },
-              { label: "Latest News", href: "#news" },
+              { label: "About the Movement", href: "/about" },
+              { label: "Policy Positions", href: "/policy" },
+              { label: "Town Hall Events", href: "/events" },
+              { label: "News & Press", href: "/news" },
+              { label: "Institutional Support", href: "/contact" },
             ].map((l) => (
               <Link key={l.label} href={l.href} className="text-sm text-white/55 hover:text-white transition-colors">
                 {l.label}
@@ -423,7 +430,7 @@ export default function LandingPage() {
               { label: "Membership Portal", href: getPortalLink("/register") },
               { label: "Member Dashboard", href: getPortalLink("/dashboard") },
               { label: "Register as Coordinator", href: getPortalLink("/register") },
-              { label: "Security Charter", href: "#" },
+              { label: "Security Charter", href: "/policy" },
             ].map((l) => (
               <Link key={l.label} href={l.href} className="text-sm text-white/55 hover:text-white transition-colors">
                 {l.label}
