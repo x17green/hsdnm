@@ -60,3 +60,4 @@ coverage/
 next-env.d.ts
 .open-next
 .shuttle
+.vercel

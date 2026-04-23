@@ -22,10 +22,10 @@
     "@hookform/resolvers": "^3.9.1",
     "sonner": "^1.7.1",
     "date-fns": "4.1.0",
-    "@hsdnm/ui": "workspace:*",
-    "@hsdnm/theme": "workspace:*",
-    "@hsdnm/lib": "workspace:*",
-    "@hsdnm/db": "workspace:*"
+    "@hsdnm/ui": "*",
+    "@hsdnm/theme": "*",
+    "@hsdnm/lib": "*",
+    "@hsdnm/db": "*"
   },
   "devDependencies": {
     "@types/node": "^22",
