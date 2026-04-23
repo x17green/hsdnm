@@ -21,7 +21,11 @@
     "react-hook-form": "^7.54.1",
     "@hookform/resolvers": "^3.9.1",
     "sonner": "^1.7.1",
-    "date-fns": "4.1.0"
+    "date-fns": "4.1.0",
+    "@hsdnm/ui": "workspace:*",
+    "@hsdnm/theme": "workspace:*",
+    "@hsdnm/lib": "workspace:*",
+    "@hsdnm/db": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22",
