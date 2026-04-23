@@ -2,16 +2,24 @@
  * Construct links that might cross between web and portal apps.
  */
 export function getPortalLink(path: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_PORTAL_URL || '';
-  // Ensure path starts with /
+  let baseUrl = process.env.NEXT_PUBLIC_PORTAL_URL || '';
+  
+  // Defensive check: If it doesn't start with http/https and isn't localhost, prepend https://
+  if (baseUrl && !baseUrl.startsWith('http')) {
+    baseUrl = `https://${baseUrl}`;
+  }
+
   const sanitizedPath = path.startsWith('/') ? path : `/${path}`;
-  // If we're already on the portal, relative links are fine for Next.js
-  // But for simple consistency, especially across apps:
   return `${baseUrl}${sanitizedPath}`;
 }
 
 export function getWebLink(path: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_WEB_URL || '';
+  let baseUrl = process.env.NEXT_PUBLIC_WEB_URL || '';
+  
+  if (baseUrl && !baseUrl.startsWith('http')) {
+    baseUrl = `https://${baseUrl}`;
+  }
+
   const sanitizedPath = path.startsWith('/') ? path : `/${path}`;
   return `${baseUrl}${sanitizedPath}`;
 }
